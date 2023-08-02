@@ -61,6 +61,9 @@ $ sudo docker run --rm -it --gpus all\
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
 Referenced: https://github.com/NVIDIA/NVFlare/blob/main/examples/advanced/cifar10/cifar10-real-world/README.md
+
+The example project from NVFlare suppose that there are 8 clients to run. But in our situation, there are only two hosts, one for server, and the other for client. Therefore, the following tutorial will show how to modify the number of client to 1 for running the example project.
+
 ## 1. Install requirements
 Install required packages for training, assuming current workpath is: `~/NVFlare/`
 ```
@@ -85,7 +88,7 @@ This script will download the CIFAR-10 dataset to `/tmp/cifar10/`:
 #### 3.1.1 Modify the project yml file
 The project file for creating the secure workspace used in this example is shown in: `./workspaces/secure_project.yml`, but there are some places should be modified.
 
-In participant section, you need to specify the name of server (IP address), client, and admin. You can remove the redundant clients as well.
+In participant section, you need to specify the name of server (IP address), client, and admin. You can remove the redundant clients as well (Here we leave 2 clients only).
 In builders section, you need to modify the `sp_end_point` to `<IP_address>:8102:8103`.
 
 Notice that `fed_learn_port` and `fed_learn_port` (port: 8102, 8103 by default) should be enabled by firewall and mounted in docker. To enable the port, you can run the following commands:
@@ -110,13 +113,13 @@ echo "There are ${N_GPU} GPUs available."
 
 We can change the clients' local GPUResourceManager configurations to show the available N_GPU GPUs at each client.
 
-Each client needs about 1 GB of GPU memory to run an FL experiment with the CIFAR-10 dataset. Therefore, each client needs to request 1 GB of memory such that 8 can run in parallel on the same GPU.
+Each client needs about 1 GB of GPU memory to run an FL experiment with the CIFAR-10 dataset. Therefore, each client needs to request 1 GB of memory such that 8 (2 in our case) can run in parallel on the same GPU.
 
 To request the GPU memory, set the "mem_per_gpu_in_GiB" value in the job's meta.json file.
 
 To update the clients' available resources, we copy resource.json.default to resources.json and modify them as follows:
 ```
-n_clients=8
+n_clients=2
 for id in $(eval echo "{1..$n_clients}") 
 do
   client_local_dir=workspaces/secure_workspace/site-${id}/local 
@@ -126,7 +129,7 @@ do
 done
 ```
 
-## 3.3 Start FL system
+### 3.3 Start FL system
 By far, the folder structure is as followed:
 ```
 ~/NVFlare/
@@ -167,10 +170,20 @@ By far, the folder structure is as followed:
        |--submit_job.py
        |--submit_job.sh
 ```
-### 3.1.1 Forward client's folder
+#### 3.3.1 Forward client's folder
 You should forward the `site-?` folder to the client's host.
 
-### 3.1.2 Start the server
+#### 3.3.2 Start the server
+In the example project, admin will devide Cifar10 dataset into 8 sub-datasets for each client, and the datapath is specified.
+
+In our case, we hope to specify the datapath by client and use the whole dataset for training because we only have one client. Therefore, some config files should be modified.
+
+1. In file `jobs/cifar10_fedavg_he/meta.json`, `min_client` should be set to 1.
+
+2. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_client.json`, `TRAIN_SPLIT_ROOT` should be set to the root datapath, for example: `/tmp/cifar10/`.
+
+3. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_server.json`, the component `data_splitter` can be deleted.
+
 For starting the `server` of FL system in the secure workspace, run
 ```
 cd ~/NVFlare/cifar10/cifar10-real-world/
@@ -179,7 +192,7 @@ echo "PYTHONPATH is ${PYTHONPATH}"
 ./workspaces/secure_workspace/192.168.100.3/startup/start.sh
 ```
 
-### 3.1.2 Start the client
+#### 3.3.3 Start the client
 Take `site-1` as an example
 ```
 cd ~/NVFlare/cifar10/cifar10-real-world/
@@ -188,7 +201,7 @@ echo "PYTHONPATH is ${PYTHONPATH}"
 ./workspaces/secure_workspace/site-1/startup/start.sh
 ```
 
-### 3.1.3 Submit the job
+#### 3.3.4 Submit the job
 Admin submits the job by running:
 ```
 ./submit_job.sh cifar10_fedavg_he 1.0
@@ -198,7 +211,7 @@ or
 ./submit_job.sh cifar10_fedavg_stream_tb 1.0
 ```
 
-### 3.1.4 Monitor the FL system
+#### 3.3.5 Monitor/Stop the FL system
 You can monitor the system through NVIDA admin API by running:
 ```
 ./workspaces/secure_workspace/admin@nvidia.com/startup/fl_admin.sh
