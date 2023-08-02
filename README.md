@@ -1,4 +1,4 @@
- # NVIDIA FLare Getting Started
+# NVIDIA FLare Getting Started
 Referenced: https://nvflare.readthedocs.io/en/main/getting_started.html
 - Server: Ubuntu 22.04 (docker not necessary)
 - Client: Ubuntu 20.04 with docker
@@ -81,16 +81,141 @@ This script will download the CIFAR-10 dataset to `/tmp/cifar10/`:
 ```
 
 ## 3. Create your FL workspace and start FL system
-### Provisioning 
+### 3.1 Provisioning 
+#### 3.1.1 Modify the project yml file
 The project file for creating the secure workspace used in this example is shown in: `./workspaces/secure_project.yml`, but there are some places should be modified.
 
 In participant section, you need to specify the name of server (IP address), client, and admin. You can remove the redundant clients as well.
-In builders section, you need to modify the `sp_end_point` to <IP_address>:8102:8103 
+In builders section, you need to modify the `sp_end_point` to `<IP_address>:8102:8103`.
 
 Notice that `fed_learn_port` and `fed_learn_port` (port: 8102, 8103 by default) should be enabled by firewall and mounted in docker. To enable the port, you can run the following commands:
 ```
 $ sudo ufw allow from <source IP> to any port 8102
 $ sudo ufw allow from <source IP> to any port 8103
+```
+#### 3.1.2 Create the secure workspace
+```
+cd ./workspaces
+nvflare provision -p ./secure_project.yml
+cp -r ./workspace/secure_project/prod_00 ./secure_workspace
+cd ..
+```
+
+### 3.2 Multi-tasking resource management
+In this example, we assume N_GPU local GPUs, each with at least 8 GB of memory, are available on the host system. To find the available number of GPUs, run
+```
+export N_GPU=$(nvidia-smi --list-gpus | wc -l)
+echo "There are ${N_GPU} GPUs available."
+```
+
+We can change the clients' local GPUResourceManager configurations to show the available N_GPU GPUs at each client.
+
+Each client needs about 1 GB of GPU memory to run an FL experiment with the CIFAR-10 dataset. Therefore, each client needs to request 1 GB of memory such that 8 can run in parallel on the same GPU.
+
+To request the GPU memory, set the "mem_per_gpu_in_GiB" value in the job's meta.json file.
+
+To update the clients' available resources, we copy resource.json.default to resources.json and modify them as follows:
+```
+n_clients=8
+for id in $(eval echo "{1..$n_clients}") 
+do
+  client_local_dir=workspaces/secure_workspace/site-${id}/local 
+  cp ${client_local_dir}/resources.json.default ${client_local_dir}/resources.json
+  sed -i "s|\"num_of_gpus\": 0|\"num_of_gpus\": ${N_GPU}|g" ${client_local_dir}/resources.json
+  sed -i "s|\"mem_per_gpu_in_GiB\": 0|\"mem_per_gpu_in_GiB\": 1|g" ${client_local_dir}/resources.json 
+done
+```
+
+## 3.3 Start FL system
+By far, the folder structure is as followed:
+```
+~/NVFlare/
+ ...
+ |--cifar10/
+    ...
+    |--cifar10-real-world/
+       ...
+       |--jobs/
+          |--cifar10_fedavg_he/ (job's name)
+             |--meta.json
+             |--cifar10_fedavg_he/config/
+                |--config_fed_client.json
+                |--config_fed_server.json
+          |--cifar10_fedavg_stream_tb/
+             ...(structure same as cifar10_fedavg_he)
+       |--workspaces/
+             |--secure_project.yml
+             |--workspace/
+             |--secure_workspace/
+                |--192.168.100.3/ (server's name)
+                   ...
+                   |--startup/
+                      ...
+                      |--start.sh
+                      |--stop_fl.sh
+                      |--sub_start.sh
+                |--site-1/
+                   ...
+                   |--startup/
+                      ...
+                      |--start.sh
+                      |--stop_fl.sh
+                      |--sub_start.sh
+                |--site-2/
+                ...
+       |--start_fl_secure.sh
+       |--submit_job.py
+       |--submit_job.sh
+```
+### 3.1.1 Forward client's folder
+You should forward the `site-?` folder to the client's host.
+
+### 3.1.2 Start the server
+For starting the `server` of FL system in the secure workspace, run
+```
+cd ~/NVFlare/cifar10/cifar10-real-world/
+export PYTHONPATH="${PYTHONPATH}:${PWD}/.."
+echo "PYTHONPATH is ${PYTHONPATH}"
+./workspaces/secure_workspace/192.168.100.3/startup/start.sh
+```
+
+### 3.1.2 Start the client
+Take `site-1` as an example
+```
+cd ~/NVFlare/cifar10/cifar10-real-world/
+export PYTHONPATH="${PYTHONPATH}:${PWD}/.."
+echo "PYTHONPATH is ${PYTHONPATH}"
+./workspaces/secure_workspace/site-1/startup/start.sh
+```
+
+### 3.1.3 Submit the job
+Admin submits the job by running:
+```
+./submit_job.sh cifar10_fedavg_he 1.0
+```
+or 
+```
+./submit_job.sh cifar10_fedavg_stream_tb 1.0
+```
+
+### 3.1.4 Monitor the FL system
+You can monitor the system through NVIDA admin API by running:
+```
+./workspaces/secure_workspace/admin@nvidia.com/startup/fl_admin.sh
+```
+Enter the admin's name:
+```
+User Name: admin@nvidia.com
+```
+Type `?` to show usage of a command, here are some common command to used:
+```
+list_jobs
+check_status client
+check_status server
+abort_job <job_id>
+delete_job <job_id>
+shutdown client
+shutdown server
 ```
 
 
