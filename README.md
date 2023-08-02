@@ -207,7 +207,7 @@ Enter the admin's name:
 ```
 User Name: admin@nvidia.com
 ```
-Type `?` to show usage of a command, here are some common command to used:
+Type `?` to show usage of a command, here are some common commands to used:
 ```
 list_jobs
 check_status client
