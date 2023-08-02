@@ -91,7 +91,7 @@ The project file for creating the secure workspace used in this example is shown
 In participant section, you need to specify the name of server (IP address), client, and admin. You can remove the redundant clients as well (Here we leave 2 clients only).
 In builders section, you need to modify the `sp_end_point` to `<IP_address>:8102:8103`.
 
-Notice that `fed_learn_port` and `fed_learn_port` (port: 8102, 8103 by default) should be enabled by firewall and mounted in docker. To enable the port, you can run the following commands:
+Notice that `fed_learn_port` and `admin_port` (port: 8102, 8103 by default) should be enabled by firewall and mounted in docker. To enable the port, you can run the following commands:
 ```
 $ sudo ufw allow from <source IP> to any port 8102
 $ sudo ufw allow from <source IP> to any port 8103
@@ -180,9 +180,9 @@ In our case, we hope to specify the datapath by client and use the whole dataset
 
 1. In file `jobs/cifar10_fedavg_he/meta.json`, `min_client` should be set to 1.
 
-2. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_client.json`, `TRAIN_SPLIT_ROOT` should be set to the root datapath, for example: `/tmp/cifar10/`.
+2. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_client.json`, `TRAIN_SPLIT_ROOT` should not be set.
 
-3. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_server.json`, the component `data_splitter` can be deleted.
+3. In file `jobs/cifar10_fedavg_he/cifar10_fedavg_he/config/config_fed_server.json`, the component `data_splitter` can be deleted. (But in our example, because we didn't implement our own dataloader, we still need to use spliter) -> send /tmp/cifar10_splits/${job_id}/site-1.npy to client 'site-1'. (This file will appear after submit_job)
 
 For starting the `server` of FL system in the secure workspace, run
 ```
@@ -196,10 +196,18 @@ echo "PYTHONPATH is ${PYTHONPATH}"
 Take `site-1` as an example
 ```
 cd ~/NVFlare/cifar10/cifar10-real-world/
+./prepare_data.sh
+```
+In this example, we need to use splited data from admin.
+So move ./site-1.npy(which is from server) to /tmp/cifar-10/
+And set dataset path in ~/NVFlare/cifar10/pt/learners/cifar10_learner.py
+Then start client:
+```
 export PYTHONPATH="${PYTHONPATH}:${PWD}/.."
 echo "PYTHONPATH is ${PYTHONPATH}"
 ./workspaces/secure_workspace/site-1/startup/start.sh
 ```
+
 
 #### 3.3.4 Submit the job
 Admin submits the job by running:
@@ -210,6 +218,7 @@ or
 ```
 ./submit_job.sh cifar10_fedavg_stream_tb 1.0
 ```
+It will call APIRunner to submit job.
 
 #### 3.3.5 Monitor/Stop the FL system
 You can monitor the system through NVIDA admin API by running:
