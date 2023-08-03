@@ -55,7 +55,7 @@ Also, port is also necessary to mounted in the container.
 $ mkdir my-workspace
 $ sudo docker run --rm -it --gpus all\
     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 \
-    -v ./my-workspace/:/my-workspace -p 8000-9000:8000-9000 \
+    -v ./my-workspace:/my-workspace -p 8000-9000:8000-9000 \
     nvflare-pt:latest
 ```
 
