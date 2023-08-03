@@ -240,8 +240,8 @@ shutdown client
 shutdown server
 ```
 
-
-# NVIDIA FLARE Workspace 
+---
+### NVIDIA FLARE Workspace (Ignore below) 
 In folder: 'cifar10/cifar10-real-world'
 
 submit_job後, 資料夾結構如下：
