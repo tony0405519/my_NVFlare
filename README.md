@@ -75,18 +75,46 @@ sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host -
 ```
 sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3 bash
 ```
-### Install NVFlare 
+### Install packages from requriement.txt
 ```
-python3 -m pip install nvflare
+git clone https://github.com/NVIDIA/NVFlare.git
+cd NVFlare
+git checkout main
+cp -r examples/advanced/cifar10 .
+cd cifar10/cifar10-real-world
+
+# You need python(>= 3.8) to install packages
+apt install python3.8
+update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+update-alternatives --set python /usr/bin/python3.8
+python -m pip install --upgrade pip
+
+pip install -r ./requirements.txt
 ```
-You will get error: "Tenseal version not found(none of version can be installed, because arm64 system architechture)"
+You will get error due to the tenseal version problem:
+```
+ERROR: Cannot install nvflare[he]==2.3.0, nvflare[he]==2.3.1 and nvflare[he]==2.3.2 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    nvflare[he] 2.3.2 depends on tenseal==0.3.12; extra == "he"
+    nvflare[he] 2.3.1 depends on tenseal==0.3.12; extra == "he"
+    nvflare[he] 2.3.0 depends on tenseal==0.3.12; extra == "he"
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+```
 
 ### Build Tenseal from github
 There is no available version on Jetson devices, so you need to build from source:
 https://github.com/OpenMined/TenSEAL
 ```
+cd ../../../  (go to the outside from NVFlare)
 git clone https://github.com/OpenMined/TenSEAL
 cd TenSEAL
+vim tenseal/version.py (Edit the version to 0.3.12)
 git submodule init
 git submodule update
 pip install .
@@ -97,14 +125,23 @@ It might encounter some problems due to cmake source(both system and pip have cm
 
 Make sure you have CMake (3.14 or higher) installed, you can use `cmake --version` to check. If you don't have the required version, you have to update your cmake through:
 ```
-sudo apt remove cmake
-pip3 install cmake
+apt remove cmake
+apt install cmake
 hash -r
 cmake --version
 ```
-Then rebuild the Tenseal,
-
-It may take some time to build the Tenseal.
+If the version still not satisfy the required version (In nano, only 3.10.0 can be installed), you need to build from source through:
+```
+wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
+cd tar -zxvf cmake-3.27.1.tar.gz
+cd cmake-3.27.1
+./bootstrap
+make
+make install
+bash -r
+cmake --version
+```
+It may take some a considerable time to build the cmake, and Tenseal. 
 
 ### Some tips
 - These Nvidia container have PyYAML already(not from pip), so you need to remove apt package and install from pip.
