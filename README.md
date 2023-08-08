@@ -92,6 +92,7 @@ git submodule update
 pip install .
 ```
 It might encounter some problems due to cmake source(both system and pip have cmake)
+
 `ModuleNotFoundError: No module named 'cmake'`
 
 Make sure you have CMake (3.14 or higher) installed, you can use `cmake --version` to check. If you don't have the required version, you have to update your cmake through:
