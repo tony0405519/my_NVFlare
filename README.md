@@ -2,7 +2,7 @@
 Referenced: https://nvflare.readthedocs.io/en/main/getting_started.html
 - Server: Ubuntu 22.04 (docker not necessary)
 - Client: Ubuntu 20.04 with docker
-- Client on edge: Jetson Nano (Jetpack 4.6.1), Jetson Xavier (Jetpack 5.1)
+- Client on edge: Jetson Nano (Jetpack 4.6.1), Jetson Xavier (Jetpack 5.1), you can use `sudo apt-cache show nvidia-jetpack` to check version.
 
 ## A. Server - Install NVFlare
 ```
@@ -135,6 +135,7 @@ If the version still not satisfy the required version (In nano, only 3.10.0 can 
 wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
 cd tar -zxvf cmake-3.27.1.tar.gz
 cd cmake-3.27.1
+apt install libssl-dev
 ./bootstrap
 make
 make install
