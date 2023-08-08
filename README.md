@@ -109,6 +109,7 @@ It may take some time to build the Tenseal.
 ### Some tips
 - These Nvidia container have PyYAML already(not from pip), so you need to remove apt package and install from pip.
 - The example codes only support `nvidia-smi` to check gpu resources, so it need to be modify (File: nvflare/fuel/utils/gpu_utils.py).
+- l4t-ml:r32.7.1-py3(Jetpack4.6) will have python3.6, which didn't support pip==23.2.1, so need to upgrade python to 3.8
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
 Referenced: https://github.com/NVIDIA/NVFlare/blob/main/examples/advanced/cifar10/cifar10-real-world/README.md
