@@ -2,8 +2,9 @@
 Referenced: https://nvflare.readthedocs.io/en/main/getting_started.html
 - Server: Ubuntu 22.04 (docker not necessary)
 - Client: Ubuntu 20.04 with docker
+- Client on edge: Jetson Nano (Jetpack 4.6.1), Jetson Xavier (Jetpack 5.1)
 
-## Install NVFlare
+## A. Server - Install NVFlare
 ```
 $ python3 -m pip install nvflare
 ```
@@ -18,7 +19,7 @@ $ git clone https://github.com/NVIDIA/NVFlare.git
 $ cd NVFlare
 $ git switch main
 ```
-## Containerized Deployment with Docker (Server can skip this part)
+## B. Client - Containerized Deployment with Docker (Server can skip this part)
 ### Build nvflare image
 Let’s first create a folder called `NVFlare_docker` and then create a file inside named `Dockerfile`:
 ```
@@ -55,9 +56,47 @@ Also, port is also necessary to mounted in the container.
 $ mkdir my-workspace
 $ sudo docker run --rm -it --gpus all\
     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 \
-    -v ./my-workspace:/my-workspace -p 8000-9000:8000-9000 \
+    -v ./my-workspace:/my-workspace -p 8102-8103:8102-8103 \
     nvflare-pt:latest
 ```
+
+## C. Client on Edge - Deploy docker on edge device
+### Build Docker container from Nvidia ML image
+reference: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-ml
+* Jetson Nano (Jetpack 4.6.1)
+```
+sudo docker run -it --gpus all --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3
+```
+* Jetson Xavier (Jetpack 5.1)
+```
+sudo docker run -it --gpus all --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3
+```
+### Install NVFlare 
+```
+python3 -m pip install nvflare
+```
+You will get error: "Tenseal not found" （？）
+
+### Build Tenseal from github
+There is no available version on Jetson devices, so you need to build from source:
+https://github.com/OpenMined/TenSEAL
+
+Make sure you have CMake (3.14 or higher) installed, you can use `cmake --version` to check. If you don't have the required version, you have to update your cmake through:
+```
+sudo apt remove cmake
+pip3 install cmake
+hash -r
+cmake --version
+```
+Then build the Tenseal through:
+```
+git clone https://github.com/OpenMined/TenSEAL
+cd TenSEAL
+git submodule init
+git submodule update
+pip install .
+```
+It may take some time to build the Tenseal.
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
 Referenced: https://github.com/NVIDIA/NVFlare/blob/main/examples/advanced/cifar10/cifar10-real-world/README.md
