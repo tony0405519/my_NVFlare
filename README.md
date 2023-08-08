@@ -63,23 +63,36 @@ $ sudo docker run --rm -it --gpus all\
 ## C. Client on Edge - Deploy docker on edge device
 ### Build Docker container from Nvidia ML image
 reference: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-ml
+(another sourc: https://github.com/dusty-nv/jetson-containers/tree/master/packages/l4t/l4t-ml)
+
+These container have built in ML package for jetson devices, so we can use gpu directly in containers.
+(TODO: build docker from base: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-base)
 * Jetson Nano (Jetpack 4.6.1)
 ```
-sudo docker run -it --gpus all --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3
+sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3 bash
 ```
 * Jetson Xavier (Jetpack 5.1)
 ```
-sudo docker run -it --gpus all --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3
+sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3 bash
 ```
 ### Install NVFlare 
 ```
 python3 -m pip install nvflare
 ```
-You will get error: "Tenseal not found" （？）
+You will get error: "Tenseal version not found(none of version can be installed, because arm64 system architechture)"
 
 ### Build Tenseal from github
 There is no available version on Jetson devices, so you need to build from source:
 https://github.com/OpenMined/TenSEAL
+```
+git clone https://github.com/OpenMined/TenSEAL
+cd TenSEAL
+git submodule init
+git submodule update
+pip install .
+```
+It might encounter some problems due to cmake source(both system and pip have cmake)
+`ModuleNotFoundError: No module named 'cmake'`
 
 Make sure you have CMake (3.14 or higher) installed, you can use `cmake --version` to check. If you don't have the required version, you have to update your cmake through:
 ```
@@ -88,15 +101,13 @@ pip3 install cmake
 hash -r
 cmake --version
 ```
-Then build the Tenseal through:
-```
-git clone https://github.com/OpenMined/TenSEAL
-cd TenSEAL
-git submodule init
-git submodule update
-pip install .
-```
+Then rebuild the Tenseal,
+
 It may take some time to build the Tenseal.
+
+### Some tips
+- These Nvidia container have PyYAML already(not from pip), so you need to remove apt package and install from pip.
+- The example codes only support `nvidia-smi` to check gpu resources, so it need to be modify (File: nvflare/fuel/utils/gpu_utils.py).
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
 Referenced: https://github.com/NVIDIA/NVFlare/blob/main/examples/advanced/cifar10/cifar10-real-world/README.md
