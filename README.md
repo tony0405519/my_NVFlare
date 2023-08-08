@@ -75,6 +75,7 @@ sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host -
 ```
 sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3 bash
 ```
+If nano install new container, it will not able to use gpu.
 ### Install packages from requriement.txt
 ```
 git clone https://github.com/NVIDIA/NVFlare.git
@@ -146,9 +147,9 @@ cmake --version
 It may take some a considerable time to build the cmake, and Tenseal. 
 
 ### Some tips
-- These Nvidia container have PyYAML already(not from pip), so you need to remove apt package and install from pip.
+- These Nvidia container have PyYAML already (not from pip), so you need to remove apt package and install from pip.
 - The example codes only support `nvidia-smi` to check gpu resources, so it need to be modify (File: nvflare/fuel/utils/gpu_utils.py).
-- l4t-ml:r32.7.1-py3(Jetpack4.6) will have python3.6, which didn't support pip==23.2.1, so need to upgrade python to 3.8
+- l4t-ml:r32.7.1-py3(Jetpack4.6) will have python3.6, which didn't support pip==23.2.1, so need to upgrade python to 3.8 (see below)
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
 Referenced: https://github.com/NVIDIA/NVFlare/blob/main/examples/advanced/cifar10/cifar10-real-world/README.md
@@ -332,6 +333,24 @@ shutdown server
 ```
 
 ---
+### Submit jobs
+- cifar10_fedavg_stream_tb: Work on Ubuntu, ubuntu docker, xavier docker.
+- cifar10_fedavg_he: Work on Ubuntu, ubuntu docker. But arm64 system would encounter below porblem.
+```
+2023-08-04 06:10:08,630 - HEModelEncryptor - ERROR - Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nvflare/private/event.py", line 61, in fire_event
+    h.handle_event(event, ctx)
+  File "/usr/local/lib/python3.8/dist-packages/nvflare/app_opt/he/model_encryptor.py", line 105, in handle_event
+    self.tenseal_context = load_tenseal_context_from_workspace(self.tenseal_context_file, fl_ctx)
+  File "/usr/local/lib/python3.8/dist-packages/nvflare/app_opt/he/homomorphic_encrypt.py", line 43, in load_tenseal_context_from_workspace
+    context = ts.context_from(data)
+  File "/usr/local/lib/python3.8/dist-packages/tenseal/__init__.py", line 71, in context_from
+    return Context.load(data, n_threads)
+  File "/usr/local/lib/python3.8/dist-packages/tenseal/enc_context.py", line 179, in load
+    return cls._wrap(ts._ts_cpp.TenSEALContext.deserialize(data))
+RuntimeError: incompatible version
+```
+
 ### NVIDIA FLARE Workspace (Ignore below) 
 In folder: 'cifar10/cifar10-real-world'
 
