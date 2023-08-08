@@ -85,6 +85,7 @@ cd cifar10/cifar10-real-world
 
 # You need python(>= 3.8) to install packages
 apt install python3.8
+apt install libpython3.8-dev
 update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 update-alternatives --set python /usr/bin/python3.8
 python -m pip install --upgrade pip
