@@ -69,11 +69,11 @@ These container have built in ML package for jetson devices, so we can use gpu d
 (TODO: build docker from base: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-base)
 * Jetson Nano (Jetpack 4.6.1)
 ```
-sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3 bash
+sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 -p 8102-8103:8102-8103 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3 bash
 ```
 * Jetson Xavier (Jetpack 5.1)
 ```
-sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3 bash
+sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 -p 8102-8103:8102-8103 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r35.2.1-py3 bash
 ```
 If nano install new container, it will not able to use gpu.
 ### Install packages from requriement.txt
@@ -120,6 +120,7 @@ vim tenseal/version.py (Edit the version to 0.3.12)
 git submodule init
 git submodule update
 pip install .
+(Jetson Nano stucks at here, can't build the wheel for tenseal.)
 ```
 It might encounter some problems due to cmake source(both system and pip have cmake)
 
