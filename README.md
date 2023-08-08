@@ -148,7 +148,7 @@ cmake --version
 It may take some a considerable time to build the cmake, and Tenseal. 
 
 ### Some tips
-- These Nvidia container have PyYAML already (not from pip), so you need to remove apt package and install from pip.
+- These Nvidia container have PyYAML already (not from pip), so you need to remove apt package and install from pip. (try `apt-get purge python3-yaml`)
 - The example codes only support `nvidia-smi` to check gpu resources, so it need to be modify (File: nvflare/fuel/utils/gpu_utils.py).
 - l4t-ml:r32.7.1-py3(Jetpack4.6) will have python3.6, which didn't support pip==23.2.1, so need to upgrade python to 3.8 (see below)
 
