@@ -150,6 +150,82 @@ It may take some a considerable time to build the cmake, and Tenseal.
 ### Some tips
 - These Nvidia container have PyYAML already (not from pip), so you need to remove apt package and install from pip. (try `apt-get purge python3-yaml`)
 - The example codes only support `nvidia-smi` to check gpu resources, so it need to be modify (File: /usr/local/lib/python3.8/dist-packages/nvflare/fuel/utils/gpu_utils.py).
+```
+# Copyright (c) 2022, NVIDIA CORPORATION.  All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+import subprocess
+from typing import List
+
+
+def has_nvidia_smi() -> bool:
+    from shutil import which
+
+    # return which("nvidia-smi") is not None
+    return True
+
+def use_nvidia_smi(query: str, report_format: str = "csv"):
+    if has_nvidia_smi():
+        result = subprocess.run(
+            ["nvidia-smi", f"--query-gpu={query}", f"--format={report_format}"],
+            capture_output=True,
+            text=True,
+        )
+        rc = result.returncode
+        if rc > 0:
+            raise Exception(f"Failed to call nvidia-smi with query {query}", result.stderr)
+        else:
+            return result.stdout.splitlines()
+    return None
+
+
+def _parse_gpu_mem(result: str = None, unit: str = "MiB") -> List:
+    gpu_memory = []
+    if result:
+        for i in result[0:]:
+            mem, mem_unit = i.split(" ")
+            if mem_unit != unit:
+                raise RuntimeError("Memory unit does not match.")
+            gpu_memory.append(int(mem))
+    return gpu_memory
+
+
+def get_host_gpu_memory_total(unit="MiB") -> List:
+    # result = use_nvidia_smi("memory.total")
+    result = "11075 MiB".splitlines()
+    return _parse_gpu_mem(result, unit)
+
+
+def get_host_gpu_memory_free(unit="MiB") -> List:
+    # result = use_nvidia_smi("memory.free")
+    result = "11075 MiB".splitlines()
+    return _parse_gpu_mem(result, unit)
+
+
+def get_host_gpu_ids() -> List:
+    """Gets GPU IDs.
+
+    Note:
+        Only supports nvidia-smi now.
+    """
+    # result = use_nvidia_smi("index")
+    gpu_ids = []
+    # if result:
+    #     for i in result[1:]:
+    #         gpu_ids.append(int(i))
+    gpu_ids.append(int(0))
+    return gpu_ids
+```
 - l4t-ml:r32.7.1-py3(Jetpack4.6) will have python3.6, which didn't support pip==23.2.1, so need to upgrade python to 3.8 (see below)
 
 # Deploy example project `Real-World Federated Learning with CIFAR-10`
