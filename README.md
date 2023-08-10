@@ -136,7 +136,7 @@ cmake --version
 If the version still not satisfy the required version (In nano, only 3.10.0 can be installed), you need to build from source through:
 ```
 wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
-cd tar -zxvf cmake-3.27.1.tar.gz
+tar -zxvf cmake-3.27.1.tar.gz
 cd cmake-3.27.1
 apt install libssl-dev
 ./bootstrap
@@ -427,6 +427,20 @@ shutdown server
     return cls._wrap(ts._ts_cpp.TenSEALContext.deserialize(data))
 RuntimeError: incompatible version
 ```
+
+### Show result
+To show the result, download all job results using the `download_job` admin command and specify the download_dir in `./figs/plot_tensorboard_events.py.`
+```
+client_results_root = "../workspaces/secure_workspace/site-2"
+download_dir = "../workspaces/secure_workspace/admin@nvidia.com/transfer"
+```
+Also, you may need to modify the job in `experiments` in `./figs/plot_tensorboard_events.py.`
+![Global_result_Ubuntu Xavier](https://github.com/tony0405519/my_NVFlare/assets/32356872/045b668f-2958-473c-97d2-802066f1ecb9)
+![Site-1_Xavier_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/9fdd26e1-8a59-49c7-b09c-4361ec74976d)
+![Site-2_Ubuntu_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/bd021cf9-01bc-4aa2-9372-5a0c659be832)
+
+
+
 
 ### NVIDIA FLARE Workspace (Ignore below) 
 In folder: 'cifar10/cifar10-real-world'
