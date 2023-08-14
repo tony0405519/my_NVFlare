@@ -442,9 +442,10 @@ client_results_root = "../workspaces/secure_workspace/site-2"
 download_dir = "../workspaces/secure_workspace/admin@nvidia.com/transfer"
 ```
 Also, you may need to modify the job in `experiments` in `./figs/plot_tensorboard_events.py.`
-![Global_result_Ubuntu Xavier](https://github.com/tony0405519/my_NVFlare/assets/32356872/045b668f-2958-473c-97d2-802066f1ecb9)
-![Site-1_Xavier_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/9fdd26e1-8a59-49c7-b09c-4361ec74976d)
-![Site-2_Ubuntu_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/bd021cf9-01bc-4aa2-9372-5a0c659be832)
+
+- Global_result_Ubuntu Xavier <br> ![Global_result_Ubuntu Xavier](https://github.com/tony0405519/my_NVFlare/assets/32356872/045b668f-2958-473c-97d2-802066f1ecb9)
+- Site-1_Xavier_result <br> ![Site-1_Xavier_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/9fdd26e1-8a59-49c7-b09c-4361ec74976d)
+- Site-2_Ubuntu_result <br> ![Site-2_Ubuntu_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/bd021cf9-01bc-4aa2-9372-5a0c659be832)
 
 
 
