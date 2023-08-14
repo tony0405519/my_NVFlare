@@ -94,6 +94,7 @@ update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 update-alternatives --set python /usr/bin/python3.8
 apt install python3-pip -y
 python -m pip install --upgrade pip
+python -m pip install -U setuptools
 
 #跑這個會跳error: pip install -r ./requirements.txt
 ```
@@ -120,6 +121,8 @@ https://github.com/OpenMined/TenSEAL
 cd ../../../  (go to the outside from NVFlare)
 git clone https://github.com/OpenMined/TenSEAL
 cd TenSEAL
+apt update
+apt install vim -y
 vim tenseal/version.py (Edit the version to 0.3.12)
 git submodule init
 git submodule update
@@ -142,7 +145,7 @@ If the version still not satisfy the required version (In nano, only 3.10.0 can 
 wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
 tar -zxvf cmake-3.27.1.tar.gz
 cd cmake-3.27.1
-apt install libssl-dev
+apt install libssl-dev -y
 ./bootstrap
 make
 make install
