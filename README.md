@@ -61,7 +61,7 @@ $ sudo docker run --rm -it --gpus all\
 ```
 
 ## C. Client on Edge - Deploy docker on edge device
-### Build Docker container from Nvidia ML image
+### Build Docker container from Nvidia Base image
 reference: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-ml
 (another sourc: https://github.com/dusty-nv/jetson-containers/tree/master/packages/l4t/l4t-ml)
 
@@ -69,7 +69,7 @@ These container have built in ML package for jetson devices, so we can use gpu d
 (TODO: build docker from base: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-base)
 * Jetson Nano (Jetpack 4.6.1)
 ```
-sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host --ulimit memlock=-1 -p 8102-8103:8102-8103 --ulimit stack=67108864 nvcr.io/nvidia/l4t-ml:r32.7.1-py3 bash
+sudo docker run -it --runtime=nvidia --name nvflare --ipc=host --ulimit memlock=-1 -p 8102-8103:8102-8103 --ulimit stack=67108864 nvcr.io/nvidia/l4t-base:r32.7.1 bash
 ```
 * Jetson Xavier (Jetpack 5.1)
 ```
@@ -78,6 +78,9 @@ sudo docker run -it --gpus all (or --runtime=nvidia) --name nvflare --ipc=host -
 If nano install new container, it will not able to use gpu.
 ### Install packages from requriement.txt
 ```
+apt update
+apt-get install git -y
+apt-get install --reinstall ca-certificates -y
 git clone https://github.com/NVIDIA/NVFlare.git
 cd NVFlare
 git checkout main
@@ -85,13 +88,15 @@ cp -r examples/advanced/cifar10 .
 cd cifar10/cifar10-real-world
 
 # You need python(>= 3.8) to install packages
-apt install python3.8
-apt install libpython3.8-dev
+apt install python3.8 -y
+apt install libpython3.8-dev -y
 update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 update-alternatives --set python /usr/bin/python3.8
+apt install python3-pip -y
 python -m pip install --upgrade pip
+python -m pip install -U setuptools
 
-pip install -r ./requirements.txt
+#跑這個會跳error: pip install -r ./requirements.txt
 ```
 You will get error due to the tenseal version problem:
 ```
@@ -116,6 +121,8 @@ https://github.com/OpenMined/TenSEAL
 cd ../../../  (go to the outside from NVFlare)
 git clone https://github.com/OpenMined/TenSEAL
 cd TenSEAL
+apt update
+apt install vim -y
 vim tenseal/version.py (Edit the version to 0.3.12)
 git submodule init
 git submodule update
@@ -138,7 +145,7 @@ If the version still not satisfy the required version (In nano, only 3.10.0 can 
 wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
 tar -zxvf cmake-3.27.1.tar.gz
 cd cmake-3.27.1
-apt install libssl-dev
+apt install libssl-dev -y
 ./bootstrap
 make
 make install
@@ -435,9 +442,10 @@ client_results_root = "../workspaces/secure_workspace/site-2"
 download_dir = "../workspaces/secure_workspace/admin@nvidia.com/transfer"
 ```
 Also, you may need to modify the job in `experiments` in `./figs/plot_tensorboard_events.py.`
-![Global_result_Ubuntu Xavier](https://github.com/tony0405519/my_NVFlare/assets/32356872/045b668f-2958-473c-97d2-802066f1ecb9)
-![Site-1_Xavier_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/9fdd26e1-8a59-49c7-b09c-4361ec74976d)
-![Site-2_Ubuntu_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/bd021cf9-01bc-4aa2-9372-5a0c659be832)
+
+- Global_result_Ubuntu Xavier <br> ![Global_result_Ubuntu Xavier](https://github.com/tony0405519/my_NVFlare/assets/32356872/045b668f-2958-473c-97d2-802066f1ecb9)
+- Site-1_Xavier_result <br> ![Site-1_Xavier_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/9fdd26e1-8a59-49c7-b09c-4361ec74976d)
+- Site-2_Ubuntu_result <br> ![Site-2_Ubuntu_result](https://github.com/tony0405519/my_NVFlare/assets/32356872/bd021cf9-01bc-4aa2-9372-5a0c659be832)
 
 
 
