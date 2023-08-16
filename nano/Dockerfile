@@ -14,6 +14,8 @@ RUN apt update
 RUN apt -y install gcc-9
 RUN apt -y install g++-9
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+RUN cd /usr/bin && ln -sfn /usr/bin/gcc-9 aarch64-linux-gnu-gcc && ln -sfn /usr/bin/g++-9 aarch64-linux-gnu-g++
 
 RUN apt -y install python3.8
 RUN apt -y install libpython3.8-dev
