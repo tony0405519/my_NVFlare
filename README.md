@@ -250,7 +250,7 @@ $ pip install -r ./requirements.txt
 ```
 Set PYTHONPATH to include custom files of this example:
 ```
-export PYTHONPATH=${PWD}/..
+export PYTHONPATH="${PYTHONPATH}:${PWD}/.."
 ```
 
 ## 2. Download the CIFAR-10 dataset
