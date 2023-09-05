@@ -1,4 +1,4 @@
-ARG PYTORCH_IMAGE=nvcr.io/nvidia/pytorch:23.02-py3
+ARG PYTORCH_IMAGE=nvcr.io/nvidia/pytorch:21.10-py3
 FROM ${PYTORCH_IMAGE}
 
 ARG NVF_VERSION=2.3
