@@ -1,4 +1,4 @@
-und# EdgeDeviceDocker
+# EdgeDeviceDocker
 This is a docker and tutorial for edge device.
 - ubuntu 20.04 PC
     - Docker version 24.0.1
@@ -20,17 +20,6 @@ This is a docker and tutorial for edge device.
 - Jetson Nano has just one device, maybe it's due to the ubuntu version.
     - https://unix.stackexchange.com/questions/512759/multiple-dev-video-for-one-physical-device
 
-## Todo
-- Jetson Nano: 192.168.100.2: Ubuntu 18.04.6 LTS
-    - Docker version 20.10.7
-    - 1.9G MEM will exploded, so as 100% CPU usage.
-    - test_cam.py gives 632M MEM, and 40~50% CPU usage.
-    - Dockerfile_cuda can't compatible with nano.
-- TX2: Ubuntu 16.04.2 LTS
-- Build nvidia/cuda:11.4.3-cudnn8-devel-ubuntu20.04 docker with opencv used CUDA
-    - Big failed !!!!!!!!!!!!!!!! -> solved. I am idiot.
-    - Docker can run, but GPU can't work with opencv. -> solved
-
 ## Update
 - There is a built docker.
     - plugin-motion-detector
@@ -43,7 +32,9 @@ This is a docker and tutorial for edge device.
         - nano will crash.
         - CUDA different between PC and edge device (11 vs 10.2) -> update docker didn't work
     - sound-event-detection
-        - 
+        - everything goes well, just run it.
+            - Xavier need to use --runtime=nvidia
+        - Can not show display.
 
 ## Note
 - `$ docker builder prune` to delete docker build cache.
