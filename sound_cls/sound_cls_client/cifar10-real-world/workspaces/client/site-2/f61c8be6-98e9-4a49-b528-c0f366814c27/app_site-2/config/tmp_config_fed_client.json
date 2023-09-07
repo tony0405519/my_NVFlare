@@ -1,0 +1,58 @@
+{
+    "format_version": 2,
+    "AGGREGATION_EPOCHS": 4,
+    "executors": [
+        {
+            "tasks": [
+                "train",
+                "submit_model",
+                "validate"
+            ],
+            "executor": {
+                "id": "Executor",
+                "path": "nvflare.app_common.executors.learner_executor.LearnerExecutor",
+                "args": {
+                    "learner_id": "sound-learner"
+                }
+            }
+        }
+    ],
+    "task_result_filters": [],
+    "task_data_filters": [],
+    "components": [
+        {
+            "id": "sound-learner",
+            "path": "pt.learners.sound_learner.MNISTLearner",
+            "args": {
+                "aggregation_epochs": "{AGGREGATION_EPOCHS}",
+                "lr": 0.01
+            }
+        },
+        {
+            "id": "analytic_sender",
+            "name": "AnalyticsSender",
+            "args": {
+                "event_type": "analytix_log_stats"
+            }
+        },
+        {
+            "id": "tb_analytics_receive",
+            "name": "TBAnalyticsReceiver",
+            "args": {
+                "events": [
+                    "analytix_log_stats"
+                ]
+            }
+        },
+        {
+            "id": "event_to_fed",
+            "name": "ConvertToFedEvent",
+            "args": {
+                "events_to_convert": [
+                    "analytix_log_stats"
+                ],
+                "fed_event_prefix": "fed."
+            }
+        }
+    ]
+}

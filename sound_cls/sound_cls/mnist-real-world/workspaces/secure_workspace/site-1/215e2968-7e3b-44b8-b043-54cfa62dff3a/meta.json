@@ -1,0 +1,64 @@
+{
+    "name": "mnist_fedavg_stream_tb_alpha1.0",
+    "resource_spec": {
+        "site-1": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-2": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-3": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-4": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-5": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-6": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-7": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-8": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        }
+    },
+    "deploy_map": {
+        "mnist_fedavg_stream_tb": [
+            "@ALL"
+        ]
+    },
+    "min_clients": 1,
+    "job_folder_name": "mnist_fedavg_stream_tb",
+    "submitter_name": "admin@nvidia.com",
+    "submitter_org": "nvidia",
+    "submitter_role": "project_admin",
+    "job_id": "215e2968-7e3b-44b8-b043-54cfa62dff3a",
+    "submit_time": 1693377855.4522524,
+    "submit_time_iso": "2023-08-30T15:44:15.452252+09:00",
+    "start_time": "",
+    "duration": "N/A",
+    "status": "SUBMITTED",
+    "schedule_count": 7,
+    "last_schedule_time": 1693378487.7414021,
+    "schedule_history": [
+        "2023-08-30 15:44:15: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:44:25: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:44:46: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:45:27: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:46:47: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:49:27: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:54:47: scheduled"
+    ]
+}

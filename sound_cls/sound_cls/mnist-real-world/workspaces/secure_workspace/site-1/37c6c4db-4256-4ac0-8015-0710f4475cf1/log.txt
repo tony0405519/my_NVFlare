@@ -1,0 +1,48 @@
+2023-08-30 15:11:54,246 - worker_process - INFO - Worker_process started.
+2023-08-30 15:11:54,506 - Cell - INFO - site-1.37c6c4db-4256-4ac0-8015-0710f4475cf1: created backbone internal connector to tcp://localhost:29726 on parent
+2023-08-30 15:11:54,530 - Cell - INFO - site-1.37c6c4db-4256-4ac0-8015-0710f4475cf1: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-30 15:11:54,530 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:29726] is starting
+2023-08-30 15:11:54,531 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-30 15:11:54,531 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-30 15:11:54,531 - FederatedClient - INFO - Got client_runner after 0.00012612342834472656 seconds
+2023-08-30 15:11:54,532 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-30 15:11:54,540 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: client runner started
+2023-08-30 15:11:54,565 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.0159151554107666 seconds
+2023-08-30 15:11:54,566 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-30 15:11:54,566 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: got task assignment: name=train, id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb
+2023-08-30 15:11:54,566 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1, task_name=train, task_id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb]: invoking task executor LearnerExecutor
+2023-08-30 15:11:54,566 - LearnerExecutor - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1, task_name=train, task_id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb]: Client trainer got task: train
+2023-08-30 15:11:54,566 - MNISTLearner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1, task_name=train, task_id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../37c6c4db-4256-4ac0-8015-0710f4475cf1/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='d2c82c93-15f6-4e9e-8318-e0e19a0309fe', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='37c6c4db-4256-4ac0-8015-0710f4475cf1', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:29726', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-30 15:11:55,871 - ClientRunner - ERROR - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1, task_name=train, task_id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb]: Processing error from executor LearnerExecutor: ValueError: num_samples should be a positive integer value, but got num_samples=0
+2023-08-30 15:11:55,872 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 86, in execute
+    return self.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 99, in train
+    validate_result: Shareable = self.learner.validate(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 357, in validate
+    self._create_datasets(fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 165, in _create_datasets
+    self.train_loader = self.train_datamgr.get_loader(self.transform_train, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, train=True)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 36, in get_loader
+    loader = data.DataLoader(dataset=dataset, shuffle=shuffle, batch_size=batch_size, num_workers=num_workers, drop_last=True, collate_fn=self.pad_seq)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 351, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/sampler.py", line 107, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+2023-08-30 15:11:55,873 - FederatedClient - INFO - Starting to push execute result.
+2023-08-30 15:11:55,876 - Communicator - INFO -  SubmitUpdate size: 575 Bytes. time: 0.003404855728149414 seconds
+2023-08-30 15:11:55,877 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1, task_name=train, task_id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb]: result sent to server for task: name=train, id=a01fa56b-0ca0-44ef-8525-2a0542d8fafb
+2023-08-30 15:11:56,484 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1, peer=secure_project, peer_run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: received aux request from Server to end current RUN
+2023-08-30 15:11:56,484 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: ABORT (RUN) command received
+2023-08-30 15:11:56,485 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: ABORT (RUN) requests end run events sequence
+2023-08-30 15:11:56,485 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: ABOUT_TO_END_RUN fired
+2023-08-30 15:11:56,486 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: END_RUN fired
+2023-08-30 15:11:57,879 - ClientRunner - INFO - [identity=site-1, run=37c6c4db-4256-4ac0-8015-0710f4475cf1]: run method requests end run events sequence
+2023-08-30 15:11:57,894 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-30 15:11:59,855 - MPM - INFO - MPM: Good Bye!

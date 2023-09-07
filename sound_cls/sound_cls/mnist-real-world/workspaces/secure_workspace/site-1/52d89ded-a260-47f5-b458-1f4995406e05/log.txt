@@ -1,0 +1,19 @@
+2023-08-30 10:40:25,560 - worker_process - INFO - Worker_process started.
+2023-08-30 10:40:25,815 - Cell - INFO - site-1.52d89ded-a260-47f5-b458-1f4995406e05: created backbone internal connector to tcp://localhost:1078 on parent
+2023-08-30 10:40:25,834 - Cell - INFO - site-1.52d89ded-a260-47f5-b458-1f4995406e05: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-30 10:40:25,834 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:1078] is starting
+2023-08-30 10:40:25,835 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-30 10:40:25,836 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-30 10:40:25,836 - FederatedClient - INFO - Got client_runner after 0.00032639503479003906 seconds
+2023-08-30 10:40:25,836 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-30 10:40:25,845 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: client runner started
+2023-08-30 10:40:25,852 - Communicator - WARNING - get_task request authentication failed.
+2023-08-30 10:40:29,830 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: ABORT (RUN) command received
+2023-08-30 10:40:29,831 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: ABORT (RUN) requests end run events sequence
+2023-08-30 10:40:29,831 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: ABOUT_TO_END_RUN fired
+2023-08-30 10:40:29,832 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: END_RUN fired
+2023-08-30 10:40:30,859 - FederatedClient - INFO - pull_task completed. Task name:None Status:False 
+2023-08-30 10:40:30,860 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: run abort signal received
+2023-08-30 10:40:30,860 - ClientRunner - INFO - [identity=site-1, run=52d89ded-a260-47f5-b458-1f4995406e05]: run method requests end run events sequence
+2023-08-30 10:40:30,875 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-30 10:40:33,172 - MPM - INFO - MPM: Good Bye!

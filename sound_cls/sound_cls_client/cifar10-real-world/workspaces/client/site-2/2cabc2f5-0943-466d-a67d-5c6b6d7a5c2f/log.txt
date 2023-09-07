@@ -1,0 +1,39 @@
+2023-09-04 06:05:26,803 - worker_process - INFO - Worker_process started.
+2023-09-04 06:05:26,935 - Cell - INFO - site-2.2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f: created backbone internal connector to tcp://localhost:65256 on parent
+2023-09-04 06:05:26,938 - Cell - INFO - site-2.2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-04 06:05:26,938 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:65256] is starting
+2023-09-04 06:05:26,939 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-04 06:05:26,939 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-04 06:05:26,940 - FederatedClient - INFO - Got client_runner after 0.0007259845733642578 seconds
+2023-09-04 06:05:26,940 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-04 06:05:26,953 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: client runner started
+2023-09-04 06:05:29,659 - Communicator - INFO - Received from secure_project server  (1114754 Bytes). getTask: train time: 0.027666091918945312 seconds
+2023-09-04 06:05:29,660 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-09-04 06:05:29,660 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: got task assignment: name=train, id=d506ad33-6f9f-48d3-845f-5764250e52cd
+2023-09-04 06:05:29,661 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: invoking task executor LearnerExecutor
+2023-09-04 06:05:29,661 - LearnerExecutor - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: Client trainer got task: train
+2023-09-04 06:05:29,661 - MNISTLearner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: Client site-2 initialized at 
+ /workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f/app_site-2 
+ with args: Namespace(client_config='config/config_fed_client.json', client_name='site-2', config_folder='config', env='config/environment.json', fed_client='fed_client.json', job_id='2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f', local_rank=0, parent_url='tcp://localhost:65256', set=['secure_train=true', 'uid=site-2', 'org=nvidia', 'config_folder=config', 'print_conf=True'], sp_target='192.168.100.3:8102', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', startup='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../startup', token='02b66e6d-4728-4268-8c0a-e37a189391a8', train_config='config/config_train.json', workspace='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/..')
+2023-09-04 06:05:31,628 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: received aux request from Server to end current RUN
+2023-09-04 06:05:31,628 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: ABORT (RUN) command received
+2023-09-04 06:05:31,628 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: triggered task_abort_signal to stop task 'train'
+2023-09-04 06:05:31,628 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: fired ABORT_TASK event to abort current task train
+2023-09-04 06:05:31,629 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: ABORT (RUN) requests end run events sequence
+2023-09-04 06:05:31,629 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: ABOUT_TO_END_RUN fired
+2023-09-04 06:05:31,629 - LearnerExecutor - ERROR - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: learner finalize exception: AttributeError: 'NoneType' object has no attribute 'remove_files'
+2023-09-04 06:05:31,629 - LearnerExecutor - ERROR - Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/app_common/executors/learner_executor.py", line 142, in finalize
+    self.learner.finalize(fl_ctx)
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 173, in finalize
+    self.train_dataset.remove_files()
+AttributeError: 'NoneType' object has no attribute 'remove_files'
+
+2023-09-04 06:05:31,629 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: END_RUN fired
+2023-09-04 06:05:31,826 - FederatedClient - INFO - Starting to push execute result.
+2023-09-04 06:05:31,833 - Communicator - INFO -  SubmitUpdate size: 638 Bytes. time: 0.007008075714111328 seconds
+2023-09-04 06:05:31,834 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: result sent to server for task: name=train, id=d506ad33-6f9f-48d3-845f-5764250e52cd
+2023-09-04 06:05:31,834 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, peer=secure_project, peer_run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f, task_name=train, task_id=d506ad33-6f9f-48d3-845f-5764250e52cd]: run abort signal received
+2023-09-04 06:05:31,835 - ClientRunner - INFO - [identity=site-2, run=2cabc2f5-0943-466d-a67d-5c6b6d7a5c2f]: run method requests end run events sequence
+2023-09-04 06:05:31,843 - FederatedClient - INFO - Shutting down client run: site-2
+2023-09-04 06:05:34,412 - MPM - INFO - MPM: Good Bye!

@@ -1,0 +1,46 @@
+2023-08-29 14:03:37,802 - worker_process - INFO - Worker_process started.
+2023-08-29 14:03:38,043 - Cell - INFO - site-1.27c00c62-019d-42b4-94d2-2f0b2993e6e4: created backbone internal connector to tcp://localhost:1078 on parent
+2023-08-29 14:03:38,053 - Cell - INFO - site-1.27c00c62-019d-42b4-94d2-2f0b2993e6e4: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-29 14:03:38,053 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:1078] is starting
+2023-08-29 14:03:38,053 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-29 14:03:38,054 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-29 14:03:38,055 - FederatedClient - INFO - Got client_runner after 0.0009701251983642578 seconds
+2023-08-29 14:03:38,055 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-29 14:03:38,066 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: client runner started
+2023-08-29 14:03:38,092 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.017466068267822266 seconds
+2023-08-29 14:03:38,092 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-29 14:03:38,093 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: got task assignment: name=train, id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711
+2023-08-29 14:03:38,093 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, task_name=train, task_id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711]: invoking task executor LearnerExecutor
+2023-08-29 14:03:38,093 - LearnerExecutor - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, task_name=train, task_id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711]: Client trainer got task: train
+2023-08-29 14:03:38,093 - MNISTLearner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, task_name=train, task_id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../27c00c62-019d-42b4-94d2-2f0b2993e6e4/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='46f86140-8de3-4521-841f-6972de9e2a26', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='27c00c62-019d-42b4-94d2-2f0b2993e6e4', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:1078', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-29 14:03:39,437 - ClientRunner - ERROR - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, task_name=train, task_id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711]: Processing error from executor LearnerExecutor: TypeError: 'module' object is not callable
+2023-08-29 14:03:39,437 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 86, in execute
+    return self.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 99, in train
+    validate_result: Shareable = self.learner.validate(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 355, in validate
+    self._create_datasets(fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 172, in _create_datasets
+    self.train_datamgr = CSVDataManager(TRAIN_ROOT)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 20, in __init__
+    self.load_datas(min_sec=1)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 24, in load_datas
+    print('------------------------------', type(glob(os.path.join(self.dir_path, '**/*.wav'), recursive=False)))
+TypeError: 'module' object is not callable
+
+2023-08-29 14:03:39,452 - FederatedClient - INFO - Starting to push execute result.
+2023-08-29 14:03:39,455 - Communicator - INFO -  SubmitUpdate size: 575 Bytes. time: 0.003360748291015625 seconds
+2023-08-29 14:03:39,456 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, task_name=train, task_id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711]: result sent to server for task: name=train, id=d8979d0d-9a3e-4cc7-80c7-6e5d72e85711
+2023-08-29 14:03:40,036 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4, peer=secure_project, peer_run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: received aux request from Server to end current RUN
+2023-08-29 14:03:40,036 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: ABORT (RUN) command received
+2023-08-29 14:03:40,037 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: ABORT (RUN) requests end run events sequence
+2023-08-29 14:03:40,037 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: ABOUT_TO_END_RUN fired
+2023-08-29 14:03:40,038 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: END_RUN fired
+2023-08-29 14:03:41,459 - ClientRunner - INFO - [identity=site-1, run=27c00c62-019d-42b4-94d2-2f0b2993e6e4]: run method requests end run events sequence
+2023-08-29 14:03:41,473 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-29 14:03:43,411 - MPM - INFO - MPM: Good Bye!

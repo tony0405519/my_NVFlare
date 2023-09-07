@@ -1,0 +1,42 @@
+2023-08-29 15:08:33,059 - worker_process - INFO - Worker_process started.
+2023-08-29 15:08:33,303 - Cell - INFO - site-1.df482f28-2395-4e64-8683-6d20265e3db6: created backbone internal connector to tcp://localhost:1078 on parent
+2023-08-29 15:08:33,316 - Cell - INFO - site-1.df482f28-2395-4e64-8683-6d20265e3db6: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-29 15:08:33,316 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:1078] is starting
+2023-08-29 15:08:33,317 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-29 15:08:33,317 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-29 15:08:33,317 - FederatedClient - INFO - Got client_runner after 0.0002925395965576172 seconds
+2023-08-29 15:08:33,318 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-29 15:08:33,329 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: client runner started
+2023-08-29 15:08:33,354 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.0175473690032959 seconds
+2023-08-29 15:08:33,355 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-29 15:08:33,355 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6]: got task assignment: name=train, id=28054e61-fd15-4287-86bd-d382521181d2
+2023-08-29 15:08:33,356 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6, task_name=train, task_id=28054e61-fd15-4287-86bd-d382521181d2]: invoking task executor LearnerExecutor
+2023-08-29 15:08:33,356 - LearnerExecutor - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6, task_name=train, task_id=28054e61-fd15-4287-86bd-d382521181d2]: Client trainer got task: train
+2023-08-29 15:08:33,356 - MNISTLearner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6, task_name=train, task_id=28054e61-fd15-4287-86bd-d382521181d2]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../df482f28-2395-4e64-8683-6d20265e3db6/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='46f86140-8de3-4521-841f-6972de9e2a26', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='df482f28-2395-4e64-8683-6d20265e3db6', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:1078', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-29 15:08:35,469 - ClientRunner - ERROR - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6, task_name=train, task_id=28054e61-fd15-4287-86bd-d382521181d2]: Processing error from executor LearnerExecutor: AttributeError: 'tuple' object has no attribute 'shape'
+2023-08-29 15:08:35,469 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 86, in execute
+    return self.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 99, in train
+    validate_result: Shareable = self.learner.validate(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 361, in validate
+    self._create_datasets(fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 182, in _create_datasets
+    print(data, data.shape)
+AttributeError: 'tuple' object has no attribute 'shape'
+
+2023-08-29 15:08:35,479 - FederatedClient - INFO - Starting to push execute result.
+2023-08-29 15:08:35,482 - Communicator - INFO -  SubmitUpdate size: 575 Bytes. time: 0.003285646438598633 seconds
+2023-08-29 15:08:35,483 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6, task_name=train, task_id=28054e61-fd15-4287-86bd-d382521181d2]: result sent to server for task: name=train, id=28054e61-fd15-4287-86bd-d382521181d2
+2023-08-29 15:08:36,297 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6, peer=secure_project, peer_run=df482f28-2395-4e64-8683-6d20265e3db6]: received aux request from Server to end current RUN
+2023-08-29 15:08:36,297 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: ABORT (RUN) command received
+2023-08-29 15:08:36,298 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: ABORT (RUN) requests end run events sequence
+2023-08-29 15:08:36,298 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: ABOUT_TO_END_RUN fired
+2023-08-29 15:08:36,299 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: END_RUN fired
+2023-08-29 15:08:37,485 - ClientRunner - INFO - [identity=site-1, run=df482f28-2395-4e64-8683-6d20265e3db6]: run method requests end run events sequence
+2023-08-29 15:08:37,500 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-29 15:08:39,669 - MPM - INFO - MPM: Good Bye!

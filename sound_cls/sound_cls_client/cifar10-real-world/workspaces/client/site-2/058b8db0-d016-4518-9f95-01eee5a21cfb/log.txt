@@ -1,0 +1,16 @@
+2023-09-05 06:58:18,497 - worker_process - INFO - Worker_process started.
+2023-09-05 06:58:18,686 - Cell - INFO - site-2.058b8db0-d016-4518-9f95-01eee5a21cfb: created backbone internal connector to tcp://localhost:65256 on parent
+2023-09-05 06:58:18,747 - Cell - INFO - site-2.058b8db0-d016-4518-9f95-01eee5a21cfb: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-05 06:58:18,747 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:65256] is starting
+2023-09-05 06:58:18,748 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-05 06:58:18,748 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-05 06:58:18,749 - FederatedClient - INFO - Got client_runner after 0.0005335807800292969 seconds
+2023-09-05 06:58:18,749 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-05 06:58:18,762 - ClientRunner - INFO - [identity=site-2, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: client runner started
+2023-09-05 06:58:21,537 - FederatedClient - INFO - pull_task completed. Task name:__end_run__ Status:True 
+2023-09-05 06:58:21,538 - ClientRunner - INFO - [identity=site-2, run=058b8db0-d016-4518-9f95-01eee5a21cfb, peer=secure_project, peer_run=058b8db0-d016-4518-9f95-01eee5a21cfb]: server asked to end the run
+2023-09-05 06:58:22,039 - ClientRunner - INFO - [identity=site-2, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: run method requests end run events sequence
+2023-09-05 06:58:22,039 - ClientRunner - INFO - [identity=site-2, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: ABOUT_TO_END_RUN fired
+2023-09-05 06:58:22,039 - ClientRunner - INFO - [identity=site-2, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: END_RUN fired
+2023-09-05 06:58:22,047 - FederatedClient - INFO - Shutting down client run: site-2
+2023-09-05 06:58:24,105 - MPM - INFO - MPM: Good Bye!

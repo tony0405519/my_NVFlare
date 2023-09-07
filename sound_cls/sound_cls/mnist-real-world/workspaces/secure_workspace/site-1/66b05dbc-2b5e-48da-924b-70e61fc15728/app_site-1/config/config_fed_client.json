@@ -1,0 +1,60 @@
+{
+    "format_version": 2,
+    "TRAIN_SPLIT_ROOT": "/tmp/mnist/MNIST_split",
+    "AGGREGATION_EPOCHS": 4,
+    "executors": [
+        {
+            "tasks": [
+                "train",
+                "submit_model",
+                "validate"
+            ],
+            "executor": {
+                "id": "Executor",
+                "path": "nvflare.app_common.executors.learner_executor.LearnerExecutor",
+                "args": {
+                    "learner_id": "mnist-learner"
+                }
+            }
+        }
+    ],
+    "task_result_filters": [],
+    "task_data_filters": [],
+    "components": [
+        {
+            "id": "mnist-learner",
+            "path": "pt.learners.mnist_learner.MNISTLearner",
+            "args": {
+                "train_idx_root": "{TRAIN_SPLIT_ROOT}",
+                "aggregation_epochs": "{AGGREGATION_EPOCHS}",
+                "lr": 0.01
+            }
+        },
+        {
+            "id": "analytic_sender",
+            "name": "AnalyticsSender",
+            "args": {
+                "event_type": "analytix_log_stats"
+            }
+        },
+        {
+            "id": "tb_analytics_receive",
+            "name": "TBAnalyticsReceiver",
+            "args": {
+                "events": [
+                    "analytix_log_stats"
+                ]
+            }
+        },
+        {
+            "id": "event_to_fed",
+            "name": "ConvertToFedEvent",
+            "args": {
+                "events_to_convert": [
+                    "analytix_log_stats"
+                ],
+                "fed_event_prefix": "fed."
+            }
+        }
+    ]
+}

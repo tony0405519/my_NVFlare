@@ -1,0 +1,66 @@
+2023-08-30 16:35:37,832 - worker_process - INFO - Worker_process started.
+2023-08-30 16:35:38,093 - Cell - INFO - site-1.dac869a5-2bb2-4d9e-90f0-5948320d4cad: created backbone internal connector to tcp://localhost:60024 on parent
+2023-08-30 16:35:38,126 - Cell - INFO - site-1.dac869a5-2bb2-4d9e-90f0-5948320d4cad: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-30 16:35:38,126 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:60024] is starting
+2023-08-30 16:35:38,126 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-30 16:35:38,127 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-30 16:35:38,127 - FederatedClient - INFO - Got client_runner after 0.0002732276916503906 seconds
+2023-08-30 16:35:38,127 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-30 16:35:38,137 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: client runner started
+2023-08-30 16:35:38,163 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.016624927520751953 seconds
+2023-08-30 16:35:38,164 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-30 16:35:38,164 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: got task assignment: name=train, id=f60b74fb-3abd-479b-a088-3d25ca0b0355
+2023-08-30 16:35:38,164 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: invoking task executor LearnerExecutor
+2023-08-30 16:35:38,164 - LearnerExecutor - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: Client trainer got task: train
+2023-08-30 16:35:38,164 - MNISTLearner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../dac869a5-2bb2-4d9e-90f0-5948320d4cad/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='b03e0f40-42c1-4909-a216-4e0001dc5fcb', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='dac869a5-2bb2-4d9e-90f0-5948320d4cad', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:60024', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-30 16:35:39,407 - LearnerExecutor - ERROR - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: learner initialize exception: ValueError: num_samples should be a positive integer value, but got num_samples=0
+2023-08-30 16:35:39,408 - LearnerExecutor - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 74, in initialize
+    self.learner.initialize(engine.get_all_components(), fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 155, in initialize
+    self._create_datasets()
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 164, in _create_datasets
+    self.train_loader = self.train_dataset.get_loader(self.transform_train, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 36, in get_loader
+    loader = data.DataLoader(dataset=dataset, shuffle=shuffle, batch_size=batch_size, num_workers=num_workers, drop_last=True, collate_fn=self.pad_seq)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 351, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/sampler.py", line 107, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+2023-08-30 16:35:39,408 - ClientRunner - ERROR - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: Processing error from executor LearnerExecutor: ValueError: num_samples should be a positive integer value, but got num_samples=0
+2023-08-30 16:35:39,409 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 83, in execute
+    self.initialize(fl_ctx)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 77, in initialize
+    raise e
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 74, in initialize
+    self.learner.initialize(engine.get_all_components(), fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 155, in initialize
+    self._create_datasets()
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 164, in _create_datasets
+    self.train_loader = self.train_dataset.get_loader(self.transform_train, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 36, in get_loader
+    loader = data.DataLoader(dataset=dataset, shuffle=shuffle, batch_size=batch_size, num_workers=num_workers, drop_last=True, collate_fn=self.pad_seq)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 351, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/sampler.py", line 107, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+2023-08-30 16:35:39,410 - FederatedClient - INFO - Starting to push execute result.
+2023-08-30 16:35:39,413 - Communicator - INFO -  SubmitUpdate size: 575 Bytes. time: 0.0035927295684814453 seconds
+2023-08-30 16:35:39,414 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, task_name=train, task_id=f60b74fb-3abd-479b-a088-3d25ca0b0355]: result sent to server for task: name=train, id=f60b74fb-3abd-479b-a088-3d25ca0b0355
+2023-08-30 16:35:40,273 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad, peer=secure_project, peer_run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: received aux request from Server to end current RUN
+2023-08-30 16:35:40,274 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: ABORT (RUN) command received
+2023-08-30 16:35:40,275 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: ABORT (RUN) requests end run events sequence
+2023-08-30 16:35:40,275 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: ABOUT_TO_END_RUN fired
+2023-08-30 16:35:40,276 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: END_RUN fired
+2023-08-30 16:35:41,416 - ClientRunner - INFO - [identity=site-1, run=dac869a5-2bb2-4d9e-90f0-5948320d4cad]: run method requests end run events sequence
+2023-08-30 16:35:41,432 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-30 16:35:43,441 - MPM - INFO - MPM: Good Bye!

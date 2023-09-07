@@ -1,0 +1,34 @@
+2023-08-24 11:26:44,136 - worker_process - INFO - Worker_process started.
+2023-08-24 11:26:44,223 - Cell - INFO - site-1.f11ed4eb-7266-44da-88eb-0786f0b1df83: created backbone internal connector to tcp://localhost:12366 on parent
+2023-08-24 11:26:44,225 - Cell - INFO - site-1.f11ed4eb-7266-44da-88eb-0786f0b1df83: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-24 11:26:44,225 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:12366] is starting
+2023-08-24 11:26:44,225 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-24 11:26:44,226 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-24 11:26:44,226 - FederatedClient - INFO - Got client_runner after 0.00042366981506347656 seconds
+2023-08-24 11:26:44,227 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-24 11:26:44,233 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: client runner started
+2023-08-24 11:26:44,244 - Communicator - INFO - Received from secure_project server  (249291 Bytes). getTask: train time: 0.008096694946289062 seconds
+2023-08-24 11:26:44,245 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-24 11:26:44,245 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: got task assignment: name=train, id=232f0ff0-62db-4dba-8772-2d7479090e1c
+2023-08-24 11:26:44,246 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: invoking task executor LearnerExecutor
+2023-08-24 11:26:44,246 - LearnerExecutor - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: Client trainer got task: train
+2023-08-24 11:26:44,246 - MNISTLearner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../f11ed4eb-7266-44da-88eb-0786f0b1df83/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='4a3e0f3b-3db4-463d-8c5b-362cf73b8e08', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='f11ed4eb-7266-44da-88eb-0786f0b1df83', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:12366', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-24 11:26:46,115 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: received aux request from Server to end current RUN
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: ABORT (RUN) command received
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: triggered task_abort_signal to stop task 'train'
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: fired ABORT_TASK event to abort current task train
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: ABORT (RUN) requests end run events sequence
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: ABOUT_TO_END_RUN fired
+2023-08-24 11:26:46,116 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: END_RUN fired
+2023-08-24 11:26:46,849 - MNISTLearner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: IndexList Path: /tmp/mnist/MNIST_split/site-1.npy
+2023-08-24 11:26:46,849 - MNISTLearner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: Loading subset index
+2023-08-24 11:26:46,850 - MNISTLearner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: Client subset size: 9400
+2023-08-24 11:26:46,905 - FederatedClient - INFO - Starting to push execute result.
+2023-08-24 11:26:46,908 - Communicator - INFO -  SubmitUpdate size: 568 Bytes. time: 0.002605915069580078 seconds
+2023-08-24 11:26:46,908 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: result sent to server for task: name=train, id=232f0ff0-62db-4dba-8772-2d7479090e1c
+2023-08-24 11:26:46,908 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83, peer=secure_project, peer_run=f11ed4eb-7266-44da-88eb-0786f0b1df83, task_name=train, task_id=232f0ff0-62db-4dba-8772-2d7479090e1c]: run abort signal received
+2023-08-24 11:26:46,908 - ClientRunner - INFO - [identity=site-1, run=f11ed4eb-7266-44da-88eb-0786f0b1df83]: run method requests end run events sequence
+2023-08-24 11:26:46,916 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-24 11:26:48,741 - MPM - INFO - MPM: Good Bye!

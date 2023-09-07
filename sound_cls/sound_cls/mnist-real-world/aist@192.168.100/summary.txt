@@ -1,0 +1,4 @@
+Number of clients: 1 
+Dirichlet sampling parameter: 1.0 
+Class counts for each client: 
+{"0": {"0": 5923, "1": 6742, "2": 5958, "3": 6131, "4": 5842, "5": 5421, "6": 5918, "7": 6265, "8": 5851, "9": 5949}}

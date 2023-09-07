@@ -1,0 +1,103 @@
+2023-08-24 11:04:55,968 - worker_process - INFO - Worker_process started.
+2023-08-24 11:04:55,988 - JsonScanner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 98, in _do_scan
+    node.processor.process_element(node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/json_configer.py", line 122, in process_element
+    self.process_config_element(self.config_ctx, node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_json_config.py", line 74, in process_config_element
+    FedJsonConfigurator.process_config_element(self, config_ctx, node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed_json_config.py", line 75, in process_config_element
+    c = self.build_component(element)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_json_config.py", line 106, in build_component
+    t = super().build_component(config_dict)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/component_builder.py", line 86, in build_component
+    return instantiate_class(class_path, class_args)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/class_utils.py", line 51, in instantiate_class
+    c = get_class(class_path)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/class_utils.py", line 30, in get_class
+    module_ = importlib.import_module(module_name)
+  File "/home/aienode1/anaconda3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'pt'
+
+2023-08-24 11:04:55,988 - worker_process - ERROR - FL client execution exception: ConfigError: Config error in ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json']: ConfigError: Error processing ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json'] in JSON element {'id': 'mnist-learner', 'path': 'pt.learners.mnist_learner.MNISTLearner', 'args': {'train_idx_root': '/tmp/mnist/MNIST_split', 'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'pt'
+2023-08-24 11:04:55,988 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-24 11:04:56,970 - MPM - ERROR - main_func execute exception: ConfigError: Config error in ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json']: ConfigError: Error processing ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json'] in JSON element {'id': 'mnist-learner', 'path': 'pt.learners.mnist_learner.MNISTLearner', 'args': {'train_idx_root': '/tmp/mnist/MNIST_split', 'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'pt'
+2023-08-24 11:04:56,972 - MPM - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 98, in _do_scan
+    node.processor.process_element(node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/json_configer.py", line 122, in process_element
+    self.process_config_element(self.config_ctx, node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_json_config.py", line 74, in process_config_element
+    FedJsonConfigurator.process_config_element(self, config_ctx, node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed_json_config.py", line 75, in process_config_element
+    c = self.build_component(element)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_json_config.py", line 106, in build_component
+    t = super().build_component(config_dict)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/component_builder.py", line 86, in build_component
+    return instantiate_class(class_path, class_args)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/class_utils.py", line 51, in instantiate_class
+    c = get_class(class_path)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/class_utils.py", line 30, in get_class
+    module_ = importlib.import_module(module_name)
+  File "/home/aienode1/anaconda3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'pt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/json_configer.py", line 114, in configure
+    self._do_configure()
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/json_configer.py", line 107, in _do_configure
+    self.json_scanner.scan(self)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 148, in scan
+    self._do_scan(node)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 121, in _do_scan
+    self._do_scan(_child_node(node, k, 0, v))
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 124, in _do_scan
+    self._do_scan(_child_node(node, node.key, i + 1, element[i]))
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/utils/json_scanner.py", line 103, in _do_scan
+    raise ConfigError(
+nvflare.fuel.common.excepts.ConfigError: Error processing ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json'] in JSON element {'id': 'mnist-learner', 'path': 'pt.learners.mnist_learner.MNISTLearner', 'args': {'train_idx_root': '/tmp/mnist/MNIST_split', 'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'pt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/fuel/f3/mpm.py", line 144, in run
+    rc = main_func()
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/app/client/worker_process.py", line 141, in main
+    raise e
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/app/client/worker_process.py", line 136, in main
+    client_app_runner.start_run(app_root, args, config_folder, federated_client, secure_train, sp)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_app_runner.py", line 42, in start_run
+    self.client_runner = self.create_client_runner(app_root, args, config_folder, federated_client, secure_train)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_app_runner.py", line 61, in create_client_runner
+    conf.configure()
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/json_configer.py", line 116, in configure
+    raise ConfigError("Config error in {}: {}".format(self.config_file_name, secure_format_exception(e)))
+nvflare.fuel.common.excepts.ConfigError: Config error in ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json']: ConfigError: Error processing ['/home/aienode1/NVFlare/mnist/mnist-real-world/workspaces/secure_workspace/site-1/startup/../50d45935-4e04-4f46-b3e3-d3189cb10811/app_site-1/config/config_fed_client.json'] in JSON element {'id': 'mnist-learner', 'path': 'pt.learners.mnist_learner.MNISTLearner', 'args': {'train_idx_root': '/tmp/mnist/MNIST_split', 'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'pt'
+
+2023-08-24 11:04:56,973 - MPM - INFO - MPM: Good Bye!

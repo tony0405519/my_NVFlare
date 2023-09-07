@@ -1,0 +1,62 @@
+2023-08-30 14:38:02,229 - worker_process - INFO - Worker_process started.
+2023-08-30 14:38:02,470 - Cell - INFO - site-1.2c415194-e32f-4042-bc3c-deb0f076f301: created backbone internal connector to tcp://localhost:1078 on parent
+2023-08-30 14:38:02,492 - Cell - INFO - site-1.2c415194-e32f-4042-bc3c-deb0f076f301: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-30 14:38:02,492 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:1078] is starting
+2023-08-30 14:38:02,493 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-30 14:38:02,493 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-30 14:38:02,494 - FederatedClient - INFO - Got client_runner after 0.00026416778564453125 seconds
+2023-08-30 14:38:02,494 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-30 14:38:02,503 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: client runner started
+2023-08-30 14:38:02,529 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.015882015228271484 seconds
+2023-08-30 14:38:02,530 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-30 14:38:02,530 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301]: got task assignment: name=train, id=f4966ce9-1428-455e-906f-424fd8c4ce27
+2023-08-30 14:38:02,530 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: invoking task executor LearnerExecutor
+2023-08-30 14:38:02,530 - LearnerExecutor - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: Client trainer got task: train
+2023-08-30 14:38:02,531 - MNISTLearner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../2c415194-e32f-4042-bc3c-deb0f076f301/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='46f86140-8de3-4521-841f-6972de9e2a26', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='2c415194-e32f-4042-bc3c-deb0f076f301', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:1078', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-30 14:38:03,833 - LearnerExecutor - ERROR - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: learner initialize exception: AttributeError: 'CSVDataManager' object has no attribute 'files_to_remove'
+2023-08-30 14:38:03,833 - LearnerExecutor - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 74, in initialize
+    self.learner.initialize(engine.get_all_components(), fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 155, in initialize
+    self._create_datasets()
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 164, in _create_datasets
+    self.train_datamgr = CSVDataManager(TRAIN_ROOT)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 20, in __init__
+    self.load_datas(min_sec=1)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 27, in load_datas
+    self.files_to_remove.append(os.path.join(self.dir_path, file))
+AttributeError: 'CSVDataManager' object has no attribute 'files_to_remove'
+
+2023-08-30 14:38:03,833 - ClientRunner - ERROR - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: Processing error from executor LearnerExecutor: AttributeError: 'CSVDataManager' object has no attribute 'files_to_remove'
+2023-08-30 14:38:03,834 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 83, in execute
+    self.initialize(fl_ctx)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 77, in initialize
+    raise e
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 74, in initialize
+    self.learner.initialize(engine.get_all_components(), fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 155, in initialize
+    self._create_datasets()
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 164, in _create_datasets
+    self.train_datamgr = CSVDataManager(TRAIN_ROOT)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 20, in __init__
+    self.load_datas(min_sec=1)
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/data_manager.py", line 27, in load_datas
+    self.files_to_remove.append(os.path.join(self.dir_path, file))
+AttributeError: 'CSVDataManager' object has no attribute 'files_to_remove'
+
+2023-08-30 14:38:03,835 - FederatedClient - INFO - Starting to push execute result.
+2023-08-30 14:38:03,838 - Communicator - INFO -  SubmitUpdate size: 575 Bytes. time: 0.003325939178466797 seconds
+2023-08-30 14:38:03,839 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301, task_name=train, task_id=f4966ce9-1428-455e-906f-424fd8c4ce27]: result sent to server for task: name=train, id=f4966ce9-1428-455e-906f-424fd8c4ce27
+2023-08-30 14:38:04,743 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301, peer=secure_project, peer_run=2c415194-e32f-4042-bc3c-deb0f076f301]: received aux request from Server to end current RUN
+2023-08-30 14:38:04,744 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: ABORT (RUN) command received
+2023-08-30 14:38:04,744 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: ABORT (RUN) requests end run events sequence
+2023-08-30 14:38:04,745 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: ABOUT_TO_END_RUN fired
+2023-08-30 14:38:04,746 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: END_RUN fired
+2023-08-30 14:38:05,841 - ClientRunner - INFO - [identity=site-1, run=2c415194-e32f-4042-bc3c-deb0f076f301]: run method requests end run events sequence
+2023-08-30 14:38:05,856 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-30 14:38:07,837 - MPM - INFO - MPM: Good Bye!

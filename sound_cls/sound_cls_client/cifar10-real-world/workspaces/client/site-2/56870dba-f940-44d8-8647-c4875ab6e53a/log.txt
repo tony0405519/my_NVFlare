@@ -1,0 +1,40 @@
+2023-09-06 06:44:44,768 - worker_process - INFO - Worker_process started.
+2023-09-06 06:44:44,961 - Cell - INFO - site-2.56870dba-f940-44d8-8647-c4875ab6e53a: created backbone internal connector to tcp://localhost:59021 on parent
+2023-09-06 06:44:45,025 - Cell - INFO - site-2.56870dba-f940-44d8-8647-c4875ab6e53a: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-06 06:44:45,025 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:59021] is starting
+2023-09-06 06:44:45,025 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-06 06:44:45,026 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-06 06:44:45,027 - FederatedClient - INFO - Got client_runner after 0.0003998279571533203 seconds
+2023-09-06 06:44:45,027 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-06 06:44:45,040 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: client runner started
+2023-09-06 06:44:47,588 - Communicator - INFO - Received from secure_project server  (1114754 Bytes). getTask: train time: 0.02391791343688965 seconds
+2023-09-06 06:44:47,589 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-09-06 06:44:47,590 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a]: got task assignment: name=train, id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e
+2023-09-06 06:44:47,590 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: invoking task executor LearnerExecutor
+2023-09-06 06:44:47,590 - LearnerExecutor - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Client trainer got task: train
+2023-09-06 06:44:47,590 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Client site-2 initialized at 
+ /workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../56870dba-f940-44d8-8647-c4875ab6e53a/app_site-2 
+ with args: Namespace(client_config='config/config_fed_client.json', client_name='site-2', config_folder='config', env='config/environment.json', fed_client='fed_client.json', job_id='56870dba-f940-44d8-8647-c4875ab6e53a', local_rank=0, parent_url='tcp://localhost:59021', set=['secure_train=true', 'uid=site-2', 'org=nvidia', 'config_folder=config', 'print_conf=True'], sp_target='192.168.100.3:8102', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', startup='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../startup', token='f9732080-a11a-49f1-a3ed-839bb2d89749', train_config='config/config_train.json', workspace='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/..')
+2023-09-06 06:44:49,695 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Client identity: site-2
+2023-09-06 06:44:53,793 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: val_acc_global_model (global_model): 0.27
+2023-09-06 06:44:53,794 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Current/Total Round: 1/10
+2023-09-06 06:44:53,794 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Client identity: site-2
+2023-09-06 06:44:53,795 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local steps per epoch: 2
+2023-09-06 06:44:53,801 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local epoch site-2: 1/4 (lr=0.01)
+2023-09-06 06:44:54,229 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local epoch site-2: 2/4 (lr=0.01)
+2023-09-06 06:44:54,443 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local epoch site-2: 3/4 (lr=0.01)
+2023-09-06 06:44:54,590 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local epoch site-2: 4/4 (lr=0.01)
+2023-09-06 06:44:58,542 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: val_acc_local_model: 0.1825
+2023-09-06 06:44:58,552 - MNISTLearner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: Local epochs finished. Returning shareable
+2023-09-06 06:44:58,552 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: finished processing task
+2023-09-06 06:44:58,553 - FederatedClient - INFO - Starting to push execute result.
+2023-09-06 06:44:58,607 - Communicator - INFO -  SubmitUpdate size: 1114320 Bytes. time: 0.053212642669677734 seconds
+2023-09-06 06:44:58,608 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a, task_name=train, task_id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e]: result sent to server for task: name=train, id=f6ebc372-0b82-4143-a6e5-04ca09e14e5e
+2023-09-06 06:45:19,566 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a, peer=secure_project, peer_run=56870dba-f940-44d8-8647-c4875ab6e53a]: received aux request from Server to end current RUN
+2023-09-06 06:45:19,567 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: ABORT (RUN) command received
+2023-09-06 06:45:19,567 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: ABORT (RUN) requests end run events sequence
+2023-09-06 06:45:19,568 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: ABOUT_TO_END_RUN fired
+2023-09-06 06:45:19,585 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: END_RUN fired
+2023-09-06 06:45:20,756 - ClientRunner - INFO - [identity=site-2, run=56870dba-f940-44d8-8647-c4875ab6e53a]: run method requests end run events sequence
+2023-09-06 06:45:20,772 - FederatedClient - INFO - Shutting down client run: site-2
+2023-09-06 06:45:22,410 - MPM - INFO - MPM: Good Bye!

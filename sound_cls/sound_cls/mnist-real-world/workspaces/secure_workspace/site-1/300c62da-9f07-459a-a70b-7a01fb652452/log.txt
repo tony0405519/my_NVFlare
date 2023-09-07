@@ -1,0 +1,19 @@
+2023-09-01 13:37:54,172 - worker_process - INFO - Worker_process started.
+2023-09-01 13:37:54,423 - Cell - INFO - site-1.300c62da-9f07-459a-a70b-7a01fb652452: created backbone internal connector to tcp://localhost:17638 on parent
+2023-09-01 13:37:54,460 - Cell - INFO - site-1.300c62da-9f07-459a-a70b-7a01fb652452: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-01 13:37:54,460 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:17638] is starting
+2023-09-01 13:37:54,461 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-01 13:37:54,461 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-01 13:37:54,462 - FederatedClient - INFO - Got client_runner after 0.0005316734313964844 seconds
+2023-09-01 13:37:54,462 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-01 13:37:54,470 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: client runner started
+2023-09-01 13:37:54,477 - FederatedClient - INFO - pull_task completed. Task name:__end_run__ Status:True 
+2023-09-01 13:37:54,477 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452, peer=secure_project, peer_run=300c62da-9f07-459a-a70b-7a01fb652452]: server asked to end the run
+2023-09-01 13:37:54,655 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452, peer=secure_project, peer_run=300c62da-9f07-459a-a70b-7a01fb652452]: received aux request from Server to end current RUN
+2023-09-01 13:37:54,655 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: ABORT (RUN) command received
+2023-09-01 13:37:54,655 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: ABORT (RUN) requests end run events sequence
+2023-09-01 13:37:54,655 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: ABOUT_TO_END_RUN fired
+2023-09-01 13:37:54,656 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: END_RUN fired
+2023-09-01 13:37:54,978 - ClientRunner - INFO - [identity=site-1, run=300c62da-9f07-459a-a70b-7a01fb652452]: run method requests end run events sequence
+2023-09-01 13:37:54,985 - FederatedClient - INFO - Shutting down client run: site-1
+2023-09-01 13:37:56,777 - MPM - INFO - MPM: Good Bye!

@@ -1,0 +1,55 @@
+2023-08-29 15:49:03,381 - worker_process - INFO - Worker_process started.
+2023-08-29 15:49:03,631 - Cell - INFO - site-1.2f1ae351-99cc-486e-9e20-e35e17de8894: created backbone internal connector to tcp://localhost:1078 on parent
+2023-08-29 15:49:03,646 - Cell - INFO - site-1.2f1ae351-99cc-486e-9e20-e35e17de8894: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-29 15:49:03,646 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:1078] is starting
+2023-08-29 15:49:03,647 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-29 15:49:03,647 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-29 15:49:03,647 - FederatedClient - INFO - Got client_runner after 0.0001418590545654297 seconds
+2023-08-29 15:49:03,647 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-29 15:49:03,659 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: client runner started
+2023-08-29 15:49:03,684 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.017478466033935547 seconds
+2023-08-29 15:49:03,684 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-29 15:49:03,685 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894]: got task assignment: name=train, id=e119298d-1313-430f-b717-0b5b8f92df6b
+2023-08-29 15:49:03,685 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: invoking task executor LearnerExecutor
+2023-08-29 15:49:03,685 - LearnerExecutor - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: Client trainer got task: train
+2023-08-29 15:49:03,685 - MNISTLearner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../2f1ae351-99cc-486e-9e20-e35e17de8894/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='46f86140-8de3-4521-841f-6972de9e2a26', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='2f1ae351-99cc-486e-9e20-e35e17de8894', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:1078', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-29 15:49:05,049 - MNISTLearner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: Client identity: site-1
+2023-08-29 15:49:05,424 - ClientRunner - ERROR - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: RuntimeError from executor LearnerExecutor: RuntimeError: expected scalar type ComplexFloat but found Float: Aborting the job!
+2023-08-29 15:49:05,425 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 86, in execute
+    return self.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 99, in train
+    validate_result: Shareable = self.learner.validate(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 399, in validate
+    global_acc = self.local_valid(self.valid_loader, abort_signal, tb_id="val_acc_global_model", fl_ctx=fl_ctx)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 350, in local_valid
+    outputs = self.model(inputs)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/aienode1/NVFlare/sound_cls/pt/networks/sound_net.py", line 114, in forward
+    xt, lengths = self.spec(xt, lengths)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/aienode1/NVFlare/sound_cls/pt/networks/audio.py", line 55, in forward
+    x = self.mel_scale(x)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torchaudio/transforms/_transforms.py", line 412, in forward
+    mel_specgram = torch.matmul(specgram.transpose(-1, -2), self.fb).transpose(-1, -2)
+RuntimeError: expected scalar type ComplexFloat but found Float
+
+2023-08-29 15:49:05,435 - FederatedClient - INFO - Starting to push execute result.
+2023-08-29 15:49:05,439 - Communicator - INFO -  SubmitUpdate size: 578 Bytes. time: 0.003606557846069336 seconds
+2023-08-29 15:49:05,440 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894, task_name=train, task_id=e119298d-1313-430f-b717-0b5b8f92df6b]: result sent to server for task: name=train, id=e119298d-1313-430f-b717-0b5b8f92df6b
+2023-08-29 15:49:06,303 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894, peer=secure_project, peer_run=2f1ae351-99cc-486e-9e20-e35e17de8894]: received aux request from Server to end current RUN
+2023-08-29 15:49:06,304 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: ABORT (RUN) command received
+2023-08-29 15:49:06,304 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: ABORT (RUN) requests end run events sequence
+2023-08-29 15:49:06,305 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: ABOUT_TO_END_RUN fired
+2023-08-29 15:49:06,305 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: END_RUN fired
+2023-08-29 15:49:07,443 - ClientRunner - INFO - [identity=site-1, run=2f1ae351-99cc-486e-9e20-e35e17de8894]: run method requests end run events sequence
+2023-08-29 15:49:07,457 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-29 15:49:09,991 - MPM - INFO - MPM: Good Bye!

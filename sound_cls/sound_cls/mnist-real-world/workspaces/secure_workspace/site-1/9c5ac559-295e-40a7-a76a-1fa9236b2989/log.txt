@@ -1,0 +1,84 @@
+2023-08-30 15:35:57,814 - worker_process - INFO - Worker_process started.
+2023-08-30 15:35:58,072 - Cell - INFO - site-1.9c5ac559-295e-40a7-a76a-1fa9236b2989: created backbone internal connector to tcp://localhost:60024 on parent
+2023-08-30 15:35:58,099 - Cell - INFO - site-1.9c5ac559-295e-40a7-a76a-1fa9236b2989: created backbone external connector to grpc://192.168.100.3:8102
+2023-08-30 15:35:58,099 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:60024] is starting
+2023-08-30 15:35:58,100 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-08-30 15:35:58,100 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-08-30 15:35:58,100 - FederatedClient - INFO - Got client_runner after 0.00016164779663085938 seconds
+2023-08-30 15:35:58,100 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-08-30 15:35:58,110 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: client runner started
+2023-08-30 15:35:58,137 - Communicator - INFO - Received from secure_project server  (1114733 Bytes). getTask: train time: 0.01694488525390625 seconds
+2023-08-30 15:35:58,137 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-30 15:35:58,138 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: got task assignment: name=train, id=47a9c2b4-0a80-4957-8bfe-668f7e0af386
+2023-08-30 15:35:58,138 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: invoking task executor LearnerExecutor
+2023-08-30 15:35:58,138 - LearnerExecutor - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Client trainer got task: train
+2023-08-30 15:35:58,138 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Client site-1 initialized at 
+ /home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../9c5ac559-295e-40a7-a76a-1fa9236b2989/app_site-1 
+ with args: Namespace(workspace='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/..', startup='/home/aienode1/NVFlare/sound_cls/mnist-real-world/workspaces/secure_workspace/site-1/startup/../startup', token='b03e0f40-42c1-4909-a216-4e0001dc5fcb', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', job_id='9c5ac559-295e-40a7-a76a-1fa9236b2989', client_name='site-1', sp_target='192.168.100.3:8102', parent_url='tcp://localhost:60024', fed_client='fed_client.json', set=['secure_train=true', 'uid=site-1', 'org=nvidia', 'config_folder=config', 'print_conf=True'], local_rank=0, train_config='config/config_train.json', client_config='config/config_fed_client.json', config_folder='config', env='config/environment.json')
+2023-08-30 15:35:59,435 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Client identity: site-1
+2023-08-30 15:36:03,785 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: val_acc_global_model (global_model): 0.03375
+2023-08-30 15:36:03,785 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Current/Total Round: 1/10
+2023-08-30 15:36:03,785 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Client identity: site-1
+2023-08-30 15:36:03,790 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local steps per epoch: 1
+2023-08-30 15:36:03,793 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local epoch site-1: 1/4 (lr=0.01)
+2023-08-30 15:36:04,023 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local epoch site-1: 2/4 (lr=0.01)
+2023-08-30 15:36:04,147 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local epoch site-1: 3/4 (lr=0.01)
+2023-08-30 15:36:04,262 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local epoch site-1: 4/4 (lr=0.01)
+2023-08-30 15:36:08,344 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: val_acc_local_model: 0.2188
+2023-08-30 15:36:08,356 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: Local epochs finished. Returning shareable
+2023-08-30 15:36:08,361 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: finished processing task
+2023-08-30 15:36:08,362 - FederatedClient - INFO - Starting to push execute result.
+2023-08-30 15:36:08,381 - Communicator - INFO -  SubmitUpdate size: 1114250 Bytes. time: 0.019283056259155273 seconds
+2023-08-30 15:36:08,382 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=47a9c2b4-0a80-4957-8bfe-668f7e0af386]: result sent to server for task: name=train, id=47a9c2b4-0a80-4957-8bfe-668f7e0af386
+2023-08-30 15:36:10,423 - Communicator - INFO - Received from secure_project server  (1114238 Bytes). getTask: train time: 0.0291903018951416 seconds
+2023-08-30 15:36:10,424 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-08-30 15:36:10,424 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: got task assignment: name=train, id=c3d157f6-6cd9-4827-befa-18bddaccfebd
+2023-08-30 15:36:10,424 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: invoking task executor LearnerExecutor
+2023-08-30 15:36:10,424 - LearnerExecutor - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Client trainer got task: train
+2023-08-30 15:36:10,424 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Client identity: site-1
+2023-08-30 15:36:14,328 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: val_acc_global_model (global_model): 0.21875
+2023-08-30 15:36:14,328 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Current/Total Round: 2/10
+2023-08-30 15:36:14,328 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Client identity: site-1
+2023-08-30 15:36:14,333 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Local steps per epoch: 1
+2023-08-30 15:36:14,337 - MNISTLearner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: Local epoch site-1: 1/4 (lr=0.01)
+2023-08-30 15:36:14,337 - ClientRunner - ERROR - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: RuntimeError from executor LearnerExecutor: LibsndfileError: Error opening '/home/aienode1/NVFlare/sound_cls/train_root/train_data/103258-5-0-1.wav': System error.: Aborting the job!
+2023-08-30 15:36:14,338 - ClientRunner - ERROR - Traceback (most recent call last):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/private/fed/client/client_runner.py", line 254, in _process_task
+    reply = executor.execute(task.name, task.data, fl_ctx, self.task_abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 86, in execute
+    return self.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/nvflare/app_common/executors/learner_executor.py", line 101, in train
+    train_result = self.learner.train(shareable, fl_ctx, abort_signal)
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 268, in train
+    self.local_train(
+  File "/home/aienode1/NVFlare/sound_cls/pt/learners/sound_learner.py", line 183, in local_train
+    for i, batch in enumerate(train_loader):
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 677, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/aienode1/NVFlare/sound_cls/pt/utils/dataset.py", line 19, in __getitem__
+    data, sr = sf.read(self.files[index])
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/soundfile.py", line 285, in read
+    with SoundFile(file, 'r', samplerate, channels,
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/soundfile.py", line 658, in __init__
+    self._file = self._open(file, mode_int, closefd)
+  File "/home/aienode1/anaconda3/lib/python3.10/site-packages/soundfile.py", line 1216, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening '/home/aienode1/NVFlare/sound_cls/train_root/train_data/103258-5-0-1.wav': System error.
+
+2023-08-30 15:36:14,339 - FederatedClient - INFO - Starting to push execute result.
+2023-08-30 15:36:14,369 - Communicator - INFO -  SubmitUpdate size: 578 Bytes. time: 0.029834747314453125 seconds
+2023-08-30 15:36:14,370 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989, task_name=train, task_id=c3d157f6-6cd9-4827-befa-18bddaccfebd]: result sent to server for task: name=train, id=c3d157f6-6cd9-4827-befa-18bddaccfebd
+2023-08-30 15:36:15,065 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989, peer=secure_project, peer_run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: received aux request from Server to end current RUN
+2023-08-30 15:36:15,066 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: ABORT (RUN) command received
+2023-08-30 15:36:15,066 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: ABORT (RUN) requests end run events sequence
+2023-08-30 15:36:15,067 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: ABOUT_TO_END_RUN fired
+2023-08-30 15:36:15,068 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: END_RUN fired
+2023-08-30 15:36:16,371 - ClientRunner - INFO - [identity=site-1, run=9c5ac559-295e-40a7-a76a-1fa9236b2989]: run method requests end run events sequence
+2023-08-30 15:36:16,385 - FederatedClient - INFO - Shutting down client run: site-1
+2023-08-30 15:36:18,438 - MPM - INFO - MPM: Good Bye!

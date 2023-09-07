@@ -1,0 +1,33 @@
+{
+  "format_version": 2,
+  "servers": [
+    {
+      "name": "secure_project",
+      "service": {
+        "target": "192.168.100.3:8102",
+        "options": [
+          [
+            "grpc.max_send_message_length",
+            2147483647
+          ],
+          [
+            "grpc.max_receive_message_length",
+            2147483647
+          ]
+        ]
+      },
+      "admin_host": "192.168.100.3",
+      "admin_port": 8103,
+      "ssl_private_key": "server.key",
+      "ssl_cert": "server.crt",
+      "ssl_root_cert": "rootCA.pem"
+    }
+  ],
+  "overseer_agent": {
+    "path": "nvflare.ha.dummy_overseer_agent.DummyOverseerAgent",
+    "args": {
+      "sp_end_point": "192.168.100.3:8102:8103",
+      "heartbeat_interval": 6
+    }
+  }
+}

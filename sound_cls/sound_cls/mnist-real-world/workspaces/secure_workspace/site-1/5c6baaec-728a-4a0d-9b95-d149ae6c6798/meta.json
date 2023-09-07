@@ -1,0 +1,58 @@
+{
+    "name": "mnist_fedavg_stream_tb_alpha1.0",
+    "resource_spec": {
+        "site-1": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-2": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-3": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-4": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-5": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-6": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-7": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-8": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        }
+    },
+    "deploy_map": {
+        "mnist_fedavg_stream_tb": [
+            "@ALL"
+        ]
+    },
+    "min_clients": 2,
+    "job_folder_name": "mnist_fedavg_stream_tb",
+    "submitter_name": "admin@nvidia.com",
+    "submitter_org": "nvidia",
+    "submitter_role": "project_admin",
+    "job_id": "5c6baaec-728a-4a0d-9b95-d149ae6c6798",
+    "submit_time": 1694048161.4157877,
+    "submit_time_iso": "2023-09-07T09:56:01.415788+09:00",
+    "start_time": "",
+    "duration": "N/A",
+    "status": "SUBMITTED",
+    "schedule_history": [
+        "2023-09-07 09:56:02: scheduled"
+    ],
+    "schedule_count": 1,
+    "last_schedule_time": 1694048162.286981
+}

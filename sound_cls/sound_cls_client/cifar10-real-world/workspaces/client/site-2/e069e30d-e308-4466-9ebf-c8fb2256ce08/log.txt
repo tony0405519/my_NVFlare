@@ -1,0 +1,55 @@
+2023-09-06 19:19:50,299 - worker_process - INFO - Worker_process started.
+2023-09-06 19:19:50,526 - Cell - INFO - site-2.e069e30d-e308-4466-9ebf-c8fb2256ce08: created backbone internal connector to tcp://localhost:59021 on parent
+2023-09-06 19:19:50,625 - Cell - INFO - site-2.e069e30d-e308-4466-9ebf-c8fb2256ce08: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-06 19:19:50,626 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:59021] is starting
+2023-09-06 19:19:50,626 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-06 19:19:50,626 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-06 19:19:50,627 - FederatedClient - INFO - Got client_runner after 0.00018835067749023438 seconds
+2023-09-06 19:19:50,627 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-06 19:19:50,641 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: client runner started
+2023-09-06 19:19:53,292 - Communicator - INFO - Received from secure_project server  (1114754 Bytes). getTask: train time: 0.03450965881347656 seconds
+2023-09-06 19:19:53,293 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-09-06 19:19:53,293 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: got task assignment: name=train, id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e
+2023-09-06 19:19:53,294 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: invoking task executor LearnerExecutor
+2023-09-06 19:19:53,294 - LearnerExecutor - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: Client trainer got task: train
+2023-09-06 19:19:53,294 - MNISTLearner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: Client site-2 initialized at 
+ /workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../e069e30d-e308-4466-9ebf-c8fb2256ce08/app_site-2 
+ with args: Namespace(client_config='config/config_fed_client.json', client_name='site-2', config_folder='config', env='config/environment.json', fed_client='fed_client.json', job_id='e069e30d-e308-4466-9ebf-c8fb2256ce08', local_rank=0, parent_url='tcp://localhost:59021', set=['secure_train=true', 'uid=site-2', 'org=nvidia', 'config_folder=config', 'print_conf=True'], sp_target='192.168.100.3:8102', ssid='ebc6125d-0a56-4688-9b08-355fe9e4d61a', startup='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../startup', token='f9732080-a11a-49f1-a3ed-839bb2d89749', train_config='config/config_train.json', workspace='/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/..')
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: received aux request from Server to end current RUN
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: ABORT (RUN) command received
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: triggered task_abort_signal to stop task 'train'
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: fired ABORT_TASK event to abort current task train
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: ABORT (RUN) requests end run events sequence
+2023-09-06 19:19:55,213 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: ABOUT_TO_END_RUN fired
+2023-09-06 19:19:55,214 - LearnerExecutor - ERROR - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: learner finalize exception: AttributeError: 'NoneType' object has no attribute 'remove_files'
+2023-09-06 19:19:55,214 - LearnerExecutor - ERROR - Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/app_common/executors/learner_executor.py", line 142, in finalize
+    self.learner.finalize(fl_ctx)
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 174, in finalize
+    self.train_dataset.remove_files()
+AttributeError: 'NoneType' object has no attribute 'remove_files'
+
+2023-09-06 19:19:55,214 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: END_RUN fired
+2023-09-06 19:19:55,309 - LearnerExecutor - ERROR - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: learner initialize exception: ValueError: num_samples should be a positive integer value, but got num_samples=0
+2023-09-06 19:19:55,310 - LearnerExecutor - ERROR - Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/app_common/executors/learner_executor.py", line 73, in initialize
+    self.learner.initialize(engine.get_all_components(), fl_ctx)
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 156, in initialize
+    self._create_datasets()
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 165, in _create_datasets
+    self.train_loader = self.train_dataset.get_loader(self.transform_train, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers)
+  File "/workspace/NVFlare/cifar10/pt/utils/data_manager.py", line 36, in get_loader
+    loader = data.DataLoader(dataset=dataset, shuffle=shuffle, batch_size=batch_size, num_workers=num_workers, drop_last=True, collate_fn=self.pad_seq)
+  File "/opt/conda/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 351, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+  File "/opt/conda/lib/python3.8/site-packages/torch/utils/data/sampler.py", line 107, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+2023-09-06 19:19:55,311 - FederatedClient - INFO - Starting to push execute result.
+2023-09-06 19:19:55,319 - Communicator - INFO -  SubmitUpdate size: 638 Bytes. time: 0.007976293563842773 seconds
+2023-09-06 19:19:55,321 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: result sent to server for task: name=train, id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e
+2023-09-06 19:19:55,321 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08, peer=secure_project, peer_run=e069e30d-e308-4466-9ebf-c8fb2256ce08, task_name=train, task_id=6c1ce606-f6c1-4531-8c00-b3bb13a2504e]: run abort signal received
+2023-09-06 19:19:55,322 - ClientRunner - INFO - [identity=site-2, run=e069e30d-e308-4466-9ebf-c8fb2256ce08]: run method requests end run events sequence
+2023-09-06 19:19:55,332 - FederatedClient - INFO - Shutting down client run: site-2
+2023-09-06 19:19:56,935 - MPM - INFO - MPM: Good Bye!

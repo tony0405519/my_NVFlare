@@ -1,0 +1,10 @@
+[E:de839330-1f0d-4633-b102-1d1c8e578508][T:2023-08-24 14:09:09.804342][U:admin@nvidia.com][A:train.deploy]
+[E:5aba1ee0-c8ba-4204-8772-89936f8879a1][T:2023-08-24 14:09:09.870636][U:][A:train.start_job]
+[E:fa2b97c6-694b-4798-b779-8e2ee4223ea0][R:225cd10a-0782-452d-9b3a-c2851e04cfed][T:2023-08-24 14:09:11.374229][J:198e4f95-0287-46cd-967f-a6e7eeac5c41][A:train#1f8449e9-562b-43b2-993c-5970c79e7d4a]received task from server
+[E:a7c81798-8a59-4282-bfed-135ea3a88da4][T:2023-08-24 14:09:11.374529][J:198e4f95-0287-46cd-967f-a6e7eeac5c41][A:train#1f8449e9-562b-43b2-993c-5970c79e7d4a]invoked executor LearnerExecutor
+[E:f0cc133d-7ad2-4996-ae97-d9488a3dad24][T:2023-08-24 14:09:41.674672][U:][A:train.abort]
+[E:f6fd8505-87b5-4f0a-a689-d2973ad32d27][R:225cd10a-0782-452d-9b3a-c2851e04cfed][T:2023-08-24 14:09:41.682109][J:198e4f95-0287-46cd-967f-a6e7eeac5c41][A:train#1f8449e9-562b-43b2-993c-5970c79e7d4a]submit result: TASK_ABORTED
+[E:de24fd66-8b51-4f89-8fc4-2f18e5c02fdd][R:e44f13de-f316-4835-aee7-dfb435af0a41][T:2023-08-24 14:12:59.160211][U:admin@nvidia.com][A:train.check_status]
+[E:fecaabc7-f36f-4700-9a7d-fa2b1bd73e9a][R:884d3f8a-0ac5-49d0-a013-72864a488dbe][T:2023-08-24 14:13:06.258044][U:admin@nvidia.com][A:train.shutdown]
+[E:78edafc4-d2c6-433e-aabc-26ba0850f6a0][R:c70c736c-0ea9-4232-b46a-7e1e16bfa13c][T:2023-08-24 15:10:23.803947][U:admin@nvidia.com][A:train.check_status]
+[E:3b0cc508-c538-47b3-a6e4-199654526bd8][R:5f794c6c-ab5c-4117-8091-5a8e8442ec8b][T:2023-08-24 15:10:52.082538][U:admin@nvidia.com][A:train.shutdown]

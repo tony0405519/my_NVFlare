@@ -1,0 +1,103 @@
+2023-09-04 05:34:08,012 - worker_process - INFO - Worker_process started.
+2023-09-04 05:34:08,073 - JsonScanner - ERROR - Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 98, in _do_scan
+    node.processor.process_element(node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 135, in process_element
+    self.process_config_element(self.config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_json_config.py", line 74, in process_config_element
+    FedJsonConfigurator.process_config_element(self, config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed_json_config.py", line 75, in process_config_element
+    c = self.authorize_and_build_component(element, config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 104, in authorize_and_build_component
+    return self.build_component(config_dict)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_json_config.py", line 106, in build_component
+    t = super().build_component(config_dict)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/component_builder.py", line 86, in build_component
+    return instantiate_class(class_path, class_args)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/class_utils.py", line 51, in instantiate_class
+    c = get_class(class_path)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/class_utils.py", line 30, in get_class
+    module_ = importlib.import_module(module_name)
+  File "/opt/conda/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 21, in <module>
+    from pt.networks.sound_net import AudioCRNN
+  File "/workspace/NVFlare/cifar10/pt/networks/sound_net.py", line 9, in <module>
+    from .audio import MelspectrogramStretch
+  File "/workspace/NVFlare/cifar10/pt/networks/audio.py", line 5, in <module>
+    from torchaudio.transforms import Spectrogram, MelSpectrogram, SlidingWindowCmn
+ModuleNotFoundError: No module named 'torchaudio'
+
+2023-09-04 05:34:08,073 - worker_process - ERROR - FL client execution exception: ConfigError: Error processing ['/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../58494093-995c-42f0-a9eb-7182ee17dfc2/app_site-2/config/config_fed_client.json'] in JSON element {'id': 'sound-learner', 'path': 'pt.learners.sound_learner.MNISTLearner', 'args': {'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'torchaudio'
+2023-09-04 05:34:08,073 - FederatedClient - INFO - Shutting down client run: site-2
+2023-09-04 05:34:09,017 - MPM - ERROR - Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 98, in _do_scan
+    node.processor.process_element(node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 135, in process_element
+    self.process_config_element(self.config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_json_config.py", line 74, in process_config_element
+    FedJsonConfigurator.process_config_element(self, config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed_json_config.py", line 75, in process_config_element
+    c = self.authorize_and_build_component(element, config_ctx, node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 104, in authorize_and_build_component
+    return self.build_component(config_dict)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_json_config.py", line 106, in build_component
+    t = super().build_component(config_dict)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/component_builder.py", line 86, in build_component
+    return instantiate_class(class_path, class_args)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/class_utils.py", line 51, in instantiate_class
+    c = get_class(class_path)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/class_utils.py", line 30, in get_class
+    module_ = importlib.import_module(module_name)
+  File "/opt/conda/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/NVFlare/cifar10/pt/learners/sound_learner.py", line 21, in <module>
+    from pt.networks.sound_net import AudioCRNN
+  File "/workspace/NVFlare/cifar10/pt/networks/sound_net.py", line 9, in <module>
+    from .audio import MelspectrogramStretch
+  File "/workspace/NVFlare/cifar10/pt/networks/audio.py", line 5, in <module>
+    from torchaudio.transforms import Spectrogram, MelSpectrogram, SlidingWindowCmn
+ModuleNotFoundError: No module named 'torchaudio'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/f3/mpm.py", line 146, in run
+    rc = main_func()
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/app/client/worker_process.py", line 140, in main
+    raise e
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/app/client/worker_process.py", line 136, in main
+    client_app_runner.start_run(app_root, args, config_folder, federated_client, secure_train, sp, conf.handlers)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_app_runner.py", line 43, in start_run
+    self.client_runner = self.create_client_runner(
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/fed/client/client_app_runner.py", line 80, in create_client_runner
+    conf.configure()
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 132, in configure
+    raise e
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 129, in configure
+    self._do_configure()
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/private/json_configer.py", line 122, in _do_configure
+    self.json_scanner.scan(self)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 164, in scan
+    self._do_scan(node)
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 137, in _do_scan
+    self._do_scan(_child_node(node, k, 0, v))
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 140, in _do_scan
+    self._do_scan(_child_node(node, node.key, i + 1, element[i]))
+  File "/opt/conda/lib/python3.8/site-packages/nvflare/fuel/utils/json_scanner.py", line 119, in _do_scan
+    raise ConfigError(
+nvflare.fuel.common.excepts.ConfigError: Error processing ['/workspace/NVFlare/cifar10/cifar10-real-world/workspaces/client/site-2/startup/../58494093-995c-42f0-a9eb-7182ee17dfc2/app_site-2/config/config_fed_client.json'] in JSON element {'id': 'sound-learner', 'path': 'pt.learners.sound_learner.MNISTLearner', 'args': {'aggregation_epochs': 4, 'lr': 0.01}}: path: components.#1, exception: ModuleNotFoundError: No module named 'torchaudio'
+
+2023-09-04 05:34:09,017 - MPM - INFO - MPM: Good Bye!

@@ -1,0 +1,63 @@
+{
+    "name": "mnist_fedavg_stream_tb_alpha1.0",
+    "resource_spec": {
+        "site-1": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-2": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-3": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-4": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-5": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-6": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-7": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        },
+        "site-8": {
+            "num_of_gpus": 1,
+            "mem_per_gpu_in_GiB": 1
+        }
+    },
+    "deploy_map": {
+        "mnist_fedavg_stream_tb": [
+            "@ALL"
+        ]
+    },
+    "min_clients": 1,
+    "job_folder_name": "mnist_fedavg_stream_tb",
+    "submitter_name": "admin@nvidia.com",
+    "submitter_org": "nvidia",
+    "submitter_role": "project_admin",
+    "job_id": "07304f0e-db28-436e-992c-6f5a6d992460",
+    "submit_time": 1693377984.5578723,
+    "submit_time_iso": "2023-08-30T15:46:24.557872+09:00",
+    "start_time": "",
+    "duration": "N/A",
+    "status": "SUBMITTED",
+    "schedule_count": 6,
+    "last_schedule_time": 1693378296.770606,
+    "schedule_history": [
+        "2023-08-30 15:46:24: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:46:35: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:46:55: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:47:35: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:48:55: not enough sites have enough resources (ok sites 0 < min sites 1",
+        "2023-08-30 15:51:36: scheduled"
+    ]
+}

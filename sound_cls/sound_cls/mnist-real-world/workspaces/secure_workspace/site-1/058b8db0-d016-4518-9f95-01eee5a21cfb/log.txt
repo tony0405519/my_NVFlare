@@ -1,0 +1,24 @@
+2023-09-05 15:58:18,315 - worker_process - INFO - Worker_process started.
+2023-09-05 15:58:18,643 - Cell - INFO - site-1.058b8db0-d016-4518-9f95-01eee5a21cfb: created backbone internal connector to tcp://localhost:18714 on parent
+2023-09-05 15:58:18,727 - Cell - INFO - site-1.058b8db0-d016-4518-9f95-01eee5a21cfb: created backbone external connector to grpc://192.168.100.3:8102
+2023-09-05 15:58:18,728 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00001 ACTIVE tcp://localhost:18714] is starting
+2023-09-05 15:58:18,728 - nvflare.fuel.f3.sfm.conn_manager - INFO - Connector [CH00002 ACTIVE grpc://192.168.100.3:8102] is starting
+2023-09-05 15:58:18,728 - FederatedClient - INFO - Wait for client_runner to be created.
+2023-09-05 15:58:18,729 - FederatedClient - INFO - Got client_runner after 0.0002694129943847656 seconds
+2023-09-05 15:58:18,729 - FederatedClient - INFO - Got the new primary SP: grpc://192.168.100.3:8102
+2023-09-05 15:58:18,738 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: client runner started
+2023-09-05 15:58:21,511 - Communicator - INFO - Received from secure_project server  (1114754 Bytes). getTask: train time: 0.015350341796875 seconds
+2023-09-05 15:58:21,512 - FederatedClient - INFO - pull_task completed. Task name:train Status:True 
+2023-09-05 15:58:21,512 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb, peer=secure_project, peer_run=058b8db0-d016-4518-9f95-01eee5a21cfb]: got task assignment: name=train, id=faba797e-7676-48c4-a94d-82e5d4eba48d
+2023-09-05 15:58:21,512 - ClientRunner - ERROR - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb, peer=secure_project, peer_run=058b8db0-d016-4518-9f95-01eee5a21cfb, task_name=train, task_id=faba797e-7676-48c4-a94d-82e5d4eba48d]: bad task assignment: no executor available for task train
+2023-09-05 15:58:21,513 - FederatedClient - INFO - Starting to push execute result.
+2023-09-05 15:58:21,517 - Communicator - INFO -  SubmitUpdate size: 568 Bytes. time: 0.0034263134002685547 seconds
+2023-09-05 15:58:21,518 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb, peer=secure_project, peer_run=058b8db0-d016-4518-9f95-01eee5a21cfb, task_name=train, task_id=faba797e-7676-48c4-a94d-82e5d4eba48d]: result sent to server for task: name=train, id=faba797e-7676-48c4-a94d-82e5d4eba48d
+2023-09-05 15:58:22,501 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb, peer=secure_project, peer_run=058b8db0-d016-4518-9f95-01eee5a21cfb]: received aux request from Server to end current RUN
+2023-09-05 15:58:22,501 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: ABORT (RUN) command received
+2023-09-05 15:58:22,502 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: ABORT (RUN) requests end run events sequence
+2023-09-05 15:58:22,502 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: ABOUT_TO_END_RUN fired
+2023-09-05 15:58:22,502 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: END_RUN fired
+2023-09-05 15:58:23,519 - ClientRunner - INFO - [identity=site-1, run=058b8db0-d016-4518-9f95-01eee5a21cfb]: run method requests end run events sequence
+2023-09-05 15:58:23,525 - FederatedClient - INFO - Shutting down client run: site-1
+2023-09-05 15:58:25,926 - MPM - INFO - MPM: Good Bye!
